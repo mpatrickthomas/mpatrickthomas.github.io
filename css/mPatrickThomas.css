@@ -10,6 +10,7 @@ body {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+    color: aliceblue;
 }
 
 .vert-text h1 {
@@ -17,6 +18,7 @@ body {
   margin: 0;
   font-size: 4.5em;
   font-weight: 700;
+color: aliceblue;
 }
 
 /* Side Menu */
@@ -111,7 +113,7 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-  background: url(../img/bg.jpg) no-repeat center center fixed; 
+  background: url(../img/splash.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -127,7 +129,7 @@ body {
 /* Skills */
 
 .languages {
-  background: #7fbbda;
+  background: #6666FF;
   padding: 50px 0;
   color: #ffffff;
 }
@@ -188,8 +190,48 @@ i.languages-icon:hover {
   background: #0a5175;
   padding: 50px 0;
 }
-
-
+#schoolInfo{
+    float: left; 
+    padding-left: 20px;
+}
+#dateInfo{
+float:right;
+}
+.infoSubtext{
+    float: left;
+    padding-left: 20px;
+}
+/*Resume*/
+.resume{
+    vertical-align: middle;
+    padding: 0;
+    text-align: center;
+    background: #0a5175;
+    padding: 50px 0;
+}
+.resume ul{
+    align-content: left;
+}
+.resume h2{
+    color: white;
+    font-weight: 700;
+    align-content: center;
+}
+.resume h3{
+    color: white;
+    text-align:left; 
+}
+.resume li{
+    color: white;
+    text-align: left;
+}
+.resume p{
+    color: white;
+}
+.eduInfo{
+    padding: 0px;
+    margin: 0px;
+}
 /* Footer */
 
 footer {
