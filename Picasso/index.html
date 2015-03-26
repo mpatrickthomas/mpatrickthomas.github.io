@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Picasso's Nightmare</title>
+        <style type="text/css">
+      		canvas { border: 3px solid black; }
+    		body { background-color: #FFF; }
+    		#canvas {background-color: #FFF;}
+    	</style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+        
+        //Canvas stuff
+        var canvas;
+        var width = 1000; //canvas width
+        var height = 500; //canvas height
+        var context;
+       
+        //ball stuff
+        var color = "#FFFF00"; //ball color
+        var radius = 20; //ball radius
+        var x = width/2; //starts the ball off on the left side of the canvas
+        var y = height - radius; //starts the ball off on the bottom of the screen
+        var dx = 0; //ball position (x) changes by 2px/sec
+        var dy = 4; //ball position (y) changes by 0px/sec
+       
+        var killCount = 0;
+        var lastTime = 0;
+        var highScore = 0;
+        var score = 0;
+        var speedMod = 0; //increments the speed every time the player increments their level
+        var blockArray = []; //holds the block objects 
+        var poot = new Audio("sounds/poot.mp3"); // *poot*
+        
+        window.onLoad = init();
+        function init(){
+            canvas = document.getElementById('canvas');
+            context = canvas.getContext('2d');
+            //creates the block objects to be used later
+            var block1 = {
+                x: width-this.width,
+                y: height-50,
+                width: 75,
+                height: 25,
+                dx: 1,
+                color: '#3366FF'
+            };
+        
+            var block2 = {
+                x: width-this.width,
+                y: height-100,
+                width: 75,
+                height: 25,
+                dx: 2,
+                color: '#FFFF00'
+            };
+        
+            var block3 = {
+                x: width-this.width,
+                y: height-150,
+                width: 75,
+                height: 25,
+                dx: 3,
+                color: '#00FF00'
+            };
+
+            var block4 = {
+                x: width-this.width,
+                y: height-200,
+                width: 75,
+                height: 25,
+                dx: 4,
+                color: '#CCCCFF'
+            };
+        
+            var block5 = {
+                x: width-this.width,
+                y: height-250,
+                width: 75,
+                height: 25,
+                dx: 5,
+                color: '#660066'
+            };
+            
+            //adds all of the blocks to the block array
+            blockArray.push(block5);
+            blockArray.push(block4);
+            blockArray.push(block3);
+            blockArray.push(block2);
+            blockArray.push(block1);
+            
+            return setInterval(update, 1000/120); //120 FPS just cuz
+        }
+        
+        function update(){
+           
+            x += dx;
+            if((y + dy) < height - radius) y += dy; //makes sure the ball doesnt fall through the stage
+            if(y<0) {
+                score++;
+                
+                speedMod += 1;
+                y += height; //brings the ball back through the floor
+            }
+            y %= height; //brings the ball back through the cieling, but that shouldn't happen
+            
+            clearScreen();
+            drawBlocks();
+            drawBall();
+            writeText();
+            checkCollisions();
+        }
+        
+        function reset(){ //resets the screen when the player dies
+            for(var i = 0; i < blockArray.length; i++){
+                blockArray[i].x = 0;
+                blockArray[i].y = height - (50*(i+1));
+                blockArray[i].width = 75;
+                blockArray[i].height = 25;
+                blockArray[i].dx = (i+1);
+            }
+            lastTime = score;
+            speedMod = 0; //brings the blocks down to normal speed
+            score = 0; //resets the player's score
+            y = height - radius; //resets the ball
+            killCount++;
+            
+        }
+        
+        function writeText(){ //writes the score and high score to the screen
+            with(context){
+                font = "30px Arial";
+                fillText("Score: " + score, 0,66);
+                fillText("High score: " + highScore,0,33);
+                fillText("Kill Count: " + killCount,750,33);
+                fillText("Last Round: " + lastTime, 0, 99);
+            }
+        }
+        
+        function clearScreen(){ //clears the screen
+            with(context){
+                clearRect(0,0,canvas.width, canvas.height);
+                //fillStyle = "#0000FF";
+            }
+        } 
+        
+        function randomize(block){ //randomizes the:
+            block.width = Math.floor(Math.random() * 200) + 50; //block width
+            block.height = Math.floor(Math.random()*100) + 1; //block height
+            block.y = Math.floor(Math.random() * 500-radius) +1; //block starting y position
+            block.color = '#'+Math.floor(Math.random()*16777215).toString(16); //color
+            block.dx = Math.floor(Math.random() * 8+speedMod) +1+speedMod; //the speed
+            block.x = -block.width; //makes sure the block starts off the screen
+        }
+        
+        function drawBlocks(){ //draws all of the blocks to the screen
+            with(context){
+                for(var i = 0; i < blockArray.length; i++){
+                    beginPath();
+                    fillStyle = blockArray[i].color;
+                    blockArray[i].x += blockArray[i].dx;
+                    if(blockArray[i].x > width){
+                        blockArray[i].x %= width;
+                        randomize(blockArray[i]); //randomizes the block attributes once it goes offscreen
+                    }                    
+                    rect(blockArray[i].x,blockArray[i].y,blockArray[i].width,blockArray[i].height);
+                    fill();
+                    stroke();
+                }
+            }
+        }
+        
+        function checkCollisions(){
+            for(var i = 0; i < blockArray.length; i++){
+                if((x > blockArray[i].x && x < blockArray[i].x+blockArray[i].width) && 
+                        (y > blockArray[i].y && y < blockArray[i].y + blockArray[i].height)){
+                    if(score > highScore) highScore = score;
+                    poot.cloneNode(true).play();// *poot* upon death
+                    reset(); //resets all elements in the likely event of the player's death
+                }
+            }
+        }
+        
+        function drawBall(){ //draws the ball to the screen
+            with(context){
+                beginPath();
+                arc(x,y,radius,0,2*Math.PI,true);
+                closePath();
+                fill();
+                onmousedown = function(){
+                  if(y > radius){
+                        y-= 6;
+                        dy = -3;
+                        dx = 0;
+                    }  
+                };
+                onmouseup = function(){
+                     if(y < height - radius){
+                        y+=6;
+                        dy = 4;
+                        dx =0;
+                    }
+                }; //blah
+                onkeydown = function(){ //raises the ball up
+                    if(y > radius){
+                        y-= 6;
+                        dy = -3;
+                        dx = 0;
+                    }
+                };
+                onkeyup = function(){ //lowers the ball back down
+                    if(y < height - radius){
+                        y+=6;
+                        dy = 4;
+                        dx =0;
+                    }
+                };
+            
+            }
+        };
+        
+        
+        </script>
+    </head>
+    <body onload="init()">
+        <canvas id ="canvas" width ="1000" height ="500"> 
+        </canvas>
+    </body>
+</html>
