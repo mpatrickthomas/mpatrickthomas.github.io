@@ -35,11 +35,11 @@ LevelLevel3=/*JSON[*/{
 		},
 		{
 			"type": "EntityFlying",
-			"x": 764,
-			"y": 1776,
+			"x": 940,
+			"y": 360,
 			"settings": {
 				"size": {
-					"x": 6252,
+					"x": 3580,
 					"y": 1596
 				}
 			}

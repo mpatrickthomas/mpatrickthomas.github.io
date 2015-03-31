@@ -22,7 +22,7 @@ MyGame = ig.Box2DGame.extend({
         playerLives:3,
 	init: function() {
                 
-		this.loadLevel(LevelLevel3);
+		this.loadLevel(LevelKittyLevel1);
                 //this.playerLives = 9;
                 ig.input.bind(ig.KEY.LEFT_ARROW, 'left');
                 ig.input.bind(ig.KEY.RIGHT_ARROW, 'right');

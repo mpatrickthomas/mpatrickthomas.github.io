@@ -7,7 +7,7 @@ ig.module(
         _wmDrawBox: true,
 	_wmBoxColor: 'rgba(255, 0, 0, 0.7)',
         _wmScalable: true,
-        type: ig.Entity.TYPE.B,
+        type: ig.Entity.TYPE.NONE,
         checkAgainst: ig.Entity.TYPE.A,
         size: {x:8, y:8},
         update:function(){},
