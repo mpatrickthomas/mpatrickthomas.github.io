@@ -99,12 +99,11 @@ function redraw()
   		}
   
   		// draw it
-            setTimeout(function(){
   		ctx.drawImage(spritesheet, 
     		spriteNum*tileWidth, 0, 
     		tileWidth, tileHeight,
   	  	x*tileWidth, y*tileHeight,
-  		  tileWidth, tileHeight)},500);
+  		  tileWidth, tileHeight);
 		}
 	}
 
@@ -426,7 +425,6 @@ function findPath(world, pathStart, pathEnd)
 				// remember this route as having no more untested options
 				Closed.push(myNode);
 			}
-            
 		} // keep iterating until until the Open list is empty
 		return result;
 	}
