@@ -24,9 +24,7 @@ if (!Array.prototype.indexOf)
 
     for (; from < len; from++)
     {
-      if (from in this &&
-          this[from] === elt)
-        return from;
+      if (from in this &&  this[from] === elt) return from;
     }
     return -1;
   };
