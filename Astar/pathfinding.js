@@ -158,6 +158,7 @@ function redraw()
 // handle click events on the canvas
 
 function drawIt(){
+    var spriteNum = 0;
     for(var x = 0; x < worldWidth; x++){
      for(var y = 0; y < worldHeight; y++){
            switch(world[x][y]){
@@ -381,6 +382,7 @@ function findPath(world, pathStart, pathEnd)
 		// temp integer variables used in the calculations
 		var length, max, min, i, j;
 		// iterate through the open list until none are left
+        var spriteNum = 0;
 		while(length = Open.length)
 		{
 			max = worldSize;
