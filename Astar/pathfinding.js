@@ -114,7 +114,7 @@ function redraw() {
             ctx.drawImage(spritesheet, spriteNum * tileWidth, 0, tileWidth, tileHeight, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
         }
     }
-/*
+
     // draw the path
     console.log('Current path length: ' + currentPath.length);
     for (rp = 0; rp < currentPath.length; rp++) {
@@ -138,7 +138,7 @@ function redraw() {
             tileWidth, tileHeight);
 
     }
-    */
+    
 }
 
 
