@@ -150,6 +150,7 @@ function redraw()
 			currentPath[rp][1]*tileHeight,
 			tileWidth, tileHeight);
         setTimeout(function(){
+            alert("ding!");
         }, 1000);
 	}		
 }
