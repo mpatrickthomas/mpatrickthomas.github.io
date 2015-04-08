@@ -224,7 +224,7 @@ function canvasClick(e)
   
   // calculate path
   currentPath = findPath(world,pathStart,pathEnd);
-  redraw();
+  //redraw();
 }
 
 // world is a 2d array of integers (eg world[10][15] = 0)
