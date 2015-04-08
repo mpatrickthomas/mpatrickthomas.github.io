@@ -22,17 +22,22 @@ var currentPath = [];
 
 if(typeof console == "undefined") var console = {log:function(){}};
 
-function onload(){
-    console.log('Page loaded.');
-    canvas = document.getElementById('gameCanvas');
-    canvas.width = worldwidth * tilewidth;
-    canvas.height = worldheight * tileheight;
-    canvas.addEventListener("click", canvasClick, false);
-    ctx = canvas.getContext("2d");
-    spritesheet = new Image();
-    
-    spritesheet.src = 'spritesheet.png';
-    spritesheet.onload = loaded;
+function onload() 
+{
+  console.log('Page loaded.');
+  canvas = document.getElementById('gameCanvas');
+  canvas.width = worldWidth * tileWidth;
+  canvas.height = worldHeight * tileHeight;
+  canvas.addEventListener("click", canvasClick, false);
+  ctx = canvas.getContext("2d");
+  spritesheet = new Image();
+  // spritesheet.src = 'spritesheet.png';
+  // the image above has been turned into a data url
+  // so that no external files are required for
+  // this web page - useful for included in a 
+  // "gist" or "jsfiddle" page
+  spritesheet.src ='spritesheet.jpg';
+  spritesheet.onload = loaded;
 }
 
 
