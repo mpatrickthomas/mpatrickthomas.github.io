@@ -1,5 +1,21 @@
-/* 	
+/* 	astar.js http://github.com/bgrins/javascript-astar
+	Implements the astar search algorithm in javascript using a binary heap
+	**Requires graph.js**
+	
 	Binary Heap taken from http://eloquentjavascript.net/appendix2.html
+	with license: http://creativecommons.org/licenses/by/3.0/
+		
+	Example Usage:
+		var graph = new Graph([
+			[0,0,0,0],
+			[1,0,0,1],
+			[1,1,0,0]
+		]);
+		var start = graph.nodes[0][0];
+		var end = graph.nodes[1][2];
+		astar.search(graph.nodes, start, end);
+		
+	See graph.js for a more advanced example
 */
  
 var astar = {
@@ -28,8 +44,13 @@ var astar = {
         
 		var openHeap = new BinaryHeap(function(node){return node.f;});
 		openHeap.push(start);
+        
         while(openHeap.size() > 0) {
+        	
+        	// Grab the lowest f(x) to process next.  Heap keeps this sorted for us.
             var currentNode = openHeap.pop();
+		    
+		    // End case -- result has been found, return the traced path
 		    if(currentNode == end) {
 			    var curr = currentNode;
 			    var ret = [];
@@ -40,6 +61,7 @@ var astar = {
 			    return ret.reverse();
 		    }
     		
+		    // Normal case -- move currentNode from open to closed, process each of its neighbors
 		    currentNode.closed = true;
 		    
 		    var neighbors = astar.neighbors(grid, currentNode);
