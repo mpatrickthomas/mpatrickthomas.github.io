@@ -149,7 +149,10 @@ function redraw()
 			currentPath[rp][0]*tileWidth, 
 			currentPath[rp][1]*tileHeight,
 			tileWidth, tileHeight);
-        alert("drew a tile!");
+        <?php
+        sleep(2);
+        
+        ?>
 	}		
 }
 
