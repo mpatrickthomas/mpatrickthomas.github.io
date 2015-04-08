@@ -104,6 +104,7 @@ function redraw()
 	// clear the screen
 	ctx.fillStyle = '#000000';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
+   
 	for (var x=0; x < worldWidth; x++)
 	{
 		for (var y=0; y < worldHeight; y++)
@@ -129,7 +130,6 @@ function redraw()
 	console.log('Current path length: '+currentPath.length);
 	for (rp=0; rp<currentPath.length; rp++)
 	{
-        setTimeout(function(){
 		switch(rp)
 		{
 			case 0:
@@ -148,7 +148,9 @@ function redraw()
 			tileWidth, tileHeight,
 			currentPath[rp][0]*tileWidth, 
 			currentPath[rp][1]*tileHeight,
-			tileWidth, tileHeight)}, 1);
+			tileWidth, tileHeight);
+        setTimeout(function(){
+        }, 1000);
 	}		
 }
 
