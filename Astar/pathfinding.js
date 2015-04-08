@@ -107,7 +107,6 @@ function redraw()
   		// choose a sprite to draw
   		switch(world[x][y])
   		{
-  			
   			case 1: 
   			spriteNum = 1; 
   			break;
