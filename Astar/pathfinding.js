@@ -157,7 +157,30 @@ function redraw()
 
 // handle click events on the canvas
 
-
+function drawIt(){
+    for(var x = 0; x < worldWidth; x++){
+     for(var y = 0; y < worldHeight; y++){
+           switch(world[x][y]){
+            case 4: 
+                spriteNum = 4;
+                   break;
+            case 5: 
+                spriteNum = 5;
+                   break;
+                   case 6:
+                   spriteNum = 6;
+                   break;
+                   
+           }
+         ctx.drawImage(spritesheet,
+			spriteNum*tileWidth, 0,
+			tileWidth, tileHeight,
+			x*tileWidth, y*tileHeight,
+			tileWidth, tileHeight);
+     }
+    }
+    
+}
 // world is a 2d array of integers (eg world[10][15] = 0)
 // pathStart and pathEnd are arrays like [5,10]
 function findPath(world, pathStart, pathEnd)
@@ -402,14 +425,16 @@ function findPath(world, pathStart, pathEnd)
 						myPath.f = myPath.g + distanceFunction(myNeighbours[i], mypathEnd);
 						// remember this new path for testing above
 						Open.push(myPath);
-                        
+                        world[myPath.x][myPath.y] = 5;
 						// mark this node in the world graph as visited
 						AStar[myPath.value] = true;
 					}
 				}
 				// remember this route as having no more untested options
 				Closed.push(myNode);
+                world[myNode.x][myNode.y] = 6;
 			}
+            drawIt();
 		} // keep iterating until the Open list is empty
 		return result;
 	}
