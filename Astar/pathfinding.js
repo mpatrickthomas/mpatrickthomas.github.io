@@ -107,9 +107,24 @@ function redraw()
   		// choose a sprite to draw
   		switch(world[x][y])
   		{
+  			
   			case 1: 
   			spriteNum = 1; 
   			break;
+            case 2:
+            spriteNum = 2;
+                break;
+            case 3:
+                spriteNum = 3;
+                break;
+            case 4:
+                spriteNum = 4;
+                break;
+                case 5:
+                spriteNum = 5;
+                break;
+                case 6:
+                spriteNum = 6;
   			default:
   			spriteNum = 0; 
   			break;
@@ -224,7 +239,7 @@ function canvasClick(e)
   
   // calculate path
   currentPath = findPath(world,pathStart,pathEnd);
-  //redraw();
+  redraw();
 }
 
 // world is a 2d array of integers (eg world[10][15] = 0)
@@ -332,7 +347,6 @@ function findPath(world, pathStart, pathEnd)
         world[W][y] = 5;
         }
 		findNeighbours(myN, myS, myE, myW, N, S, E, W, result);
-        redrawPath();
 		return result;
 	}
 
