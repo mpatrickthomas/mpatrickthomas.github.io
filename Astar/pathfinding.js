@@ -4,8 +4,8 @@ var spritesheet = null;
 var spritesheetLoaded = false;
 var world = [[]]; //The world is a 2-Dimensional array of tiles.
 
-var worldWidth = 16;
-var worldHeight = 16;
+var worldWidth = 200;
+var worldHeight = 200;
 
 // size of a tile in pixels
 var tileWidth = 32;
@@ -349,7 +349,6 @@ function findPath(world, pathStart, pathEnd)
 	function Node(Parent, Point)
 	{
 		var newNode = {
-			// pointer to another Node object
 			Parent:Parent,
 			// array index of this Node in the world linear array
 			value:Point.x + (Point.y * worldWidth),
