@@ -1,88 +1,83 @@
-// graph.js
-// Sets up the page with a graph
+/*  graph.js http://github.com/bgrins/javascript-astar
+    MIT License
+    
+    Creates a Graph class used in the astar search algorithm.
+    Includes Binary Heap (with modifications) from Marijn Haverbeke 
+        URL: http://eloquentjavascript.net/appendix2.html
+        License: http://creativecommons.org/licenses/by/3.0/
+*/
 
-window.log = function(){
-  log.history = log.history || [];   // store logs to an array for reference
-  log.history.push(arguments);
-  if(this.console){
-    console.log( Array.prototype.slice.call(arguments) );
-  }
-};
-
-if (!Array.prototype.indexOf)
-{
-  Array.prototype.indexOf = function(elt /*, from*/)
-  {
-    var len = this.length;
-
-    var from = Number(arguments[1]) || 0;
-    from = (from < 0)
-         ? Math.ceil(from)
-         : Math.floor(from);
-    if (from < 0)
-      from += len;
-
-    for (; from < len; from++)
-    {
-      if (from in this &&
-          this[from] === elt)
-        return from;
-    }
-    return -1;
-  };
+if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function(elt /*, from*/) {
+        var len = this.length;
+        var from = Number(arguments[1]) || 0;
+        from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+        if (from < 0) {
+            from += len;
+        }
+        for (; from < len; ++from) {
+            if (from in this && this[from] === elt) {
+                return from;
+            }
+        }
+        return -1;
+    };
 }
 
-Array.prototype.remove = function(from, to) {
-  var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
-  return this.push.apply(this, rest);
-};
+if (!Array.prototype.remove) {
+    Array.prototype.remove = function(from, to) {
+        var rest = this.slice((to || from) + 1 || this.length);
+        this.length = from < 0 ? this.length + from : from;
+        return this.push.apply(this, rest);
+    };
+}
 
 var GraphNodeType = { OPEN: 0, WALL: 1 };
 function Graph(grid) {
-	this.elements = grid;
-	this.nodes = [];
-	
-	for (var x = 0; x < grid.length; x++) {
-		var row = grid[x];
-		this.nodes[x] = [];
-		for (var y = 0; y < row.length; y++) {
-			this.nodes[x].push(new GraphNode(x, y, row[y]));
-		}
-	}
+    this.elements = grid;
+    var nodes = [];
+
+    var row, rowLength, len = grid.length;
+    for (var x = 0; x < len; ++x) {
+        row = grid[x];
+        rowLength = row.length;
+        nodes[x] = new Array(rowLength); // optimum array with size
+        for (var y = 0; y < rowLength; ++y) {
+            nodes[x][y] = new GraphNode(x, y, row[y]);
+        }
+    }
+    this.nodes = nodes;
 }
 Graph.prototype.toString = function() {
-	var graphString = "\n";
-	var nodes = this.nodes;
-	for (var x = 0; x < nodes.length; x++) {
-		var rowDebug = "";
-		var row = nodes[x];
-		for (var y = 0; y < row.length; y++) {
-			rowDebug += row[y].type + " ";
-		}
-		graphString = graphString + rowDebug + "\n";
-	}
-	return graphString;
+    var graphString = "\n";
+    var nodes = this.nodes;
+    var rowDebug, row, y, l;
+    for (var x = 0, len = nodes.length; x < len;) {
+        rowDebug = "";
+        row = nodes[x++];
+        for (y = 0, l = row.length; y < l;) {
+            rowDebug += row[y++].type + " ";
+        }
+        graphString = graphString + rowDebug + "\n";
+    }
+    return graphString;
 };
 
 function GraphNode(x,y,type) {
-	this.data = { };
-	this.x = x;
-	this.y = y;
-	this.pos = {x:x, y:y};
-	this.type = type;
+    this.data = {};
+    this.x = x;
+    this.y = y;
+    this.pos = {x:x, y:y};
+    this.type = type;
 }
 GraphNode.prototype.toString = function() {
-	return "[" + this.x + " " + this.y + "]";
+    return "[" + this.x + " " + this.y + "]";
 };
 GraphNode.prototype.isWall = function() {
-	return this.type == GraphNodeType.WALL;
+    return this.type == GraphNodeType.WALL;
 };
 
 
-// Binary Heap
-// Taken from http://eloquentjavascript.net/appendix2.html
-// License: http://creativecommons.org/licenses/by/3.0/
 function BinaryHeap(scoreFunction){
   this.content = [];
   this.scoreFunction = scoreFunction;
@@ -95,7 +90,7 @@ BinaryHeap.prototype = {
     // Allow it to sink down.
     this.sinkDown(this.content.length - 1);
   },
-  
+
   pop: function() {
     // Store the first element so we can return it later.
     var result = this.content[0];
@@ -110,25 +105,19 @@ BinaryHeap.prototype = {
     return result;
   },
   remove: function(node) {
-    var len = this.content.length;
-    // To remove a value, we must search through the array to find
-    // it.
-    for (var i = 0; i < len; i++) {
-      if (this.content[i] == node) {
-        // When it is found, the process seen in 'pop' is repeated
-        // to fill up the hole.
-        var end = this.content.pop();
-        if (i != len - 1) {
-          this.content[i] = end;
-          if (this.scoreFunction(end) < this.scoreFunction(node))
-            this.sinkDown(i);
-          else
-            this.bubbleUp(i);
-        }
-        return;
-      }
+
+    var i = this.content.indexOf(node);
+
+    // When it is found, the process seen in 'pop' is repeated
+    // to fill up the hole.
+    var end = this.content.pop();
+    if (i !== this.content.length - 1) {
+      this.content[i] = end;
+      if (this.scoreFunction(end) < this.scoreFunction(node))
+        this.sinkDown(i);
+      else
+        this.bubbleUp(i);
     }
-    throw new Error("Node not found.");
   },
 
   size: function() {
@@ -136,7 +125,7 @@ BinaryHeap.prototype = {
   },
 
   rescoreElement: function(node) {
-  	this.sinkDown(this.content.indexOf(node));
+    this.sinkDown(this.content.indexOf(node));
   },
   sinkDown: function(n) {
     // Fetch the element that has to be sunk.
@@ -144,7 +133,7 @@ BinaryHeap.prototype = {
     // When at 0, an element can not sink any further.
     while (n > 0) {
       // Compute the parent element's index, and fetch it.
-      var parentN = Math.floor((n + 1) / 2) - 1,
+      var parentN = ((n + 1) >> 1) - 1,
           parent = this.content[parentN];
       // Swap the elements if the parent is greater.
       if (this.scoreFunction(element) < this.scoreFunction(parent)) {
@@ -168,7 +157,7 @@ BinaryHeap.prototype = {
 
     while(true) {
       // Compute the indices of the child elements.
-      var child2N = (n + 1) * 2, child1N = child2N - 1;
+      var child2N = (n + 1) << 1, child1N = child2N - 1;
       // This is used to store the new position of the element,
       // if any.
       var swap = null;
@@ -185,12 +174,12 @@ BinaryHeap.prototype = {
       if (child2N < length) {
         var child2 = this.content[child2N],
             child2Score = this.scoreFunction(child2);
-        if (child2Score < (swap == null ? elemScore : child1Score))
+        if (child2Score < (swap === null ? elemScore : child1Score))
           swap = child2N;
       }
 
       // If the element needs to be moved, swap it, and continue.
-      if (swap != null) {
+      if (swap !== null) {
         this.content[n] = this.content[swap];
         this.content[swap] = element;
         n = swap;
@@ -202,7 +191,3 @@ BinaryHeap.prototype = {
     }
   }
 };
-
-
-
-
