@@ -33,7 +33,7 @@ function onload()
 	canvas = document.getElementById('gameCanvas');
 	canvas.width = worldWidth * tileWidth;
 	canvas.height = worldHeight * tileHeight;
-	canvas.addEventListener("click", canvasClick, false);
+	
 	if (!canvas) alert('Blah!');
 	ctx = canvas.getContext("2d");
 	if (!ctx) alert('Hmm!');
