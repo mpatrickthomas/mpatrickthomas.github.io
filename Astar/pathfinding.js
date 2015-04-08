@@ -8,15 +8,15 @@ var spritesheetloaded = false;
 
 var world = [[]];
 
-var worldwidth = 16;
+var worldWidth = 16;
 
-var worldheight = 16;
+var worldHeight = 16;
 
-var tilewidth = 32;
+var tileWidth = 32;
 
-var tileheight = 32;
+var tileHeight = 32;
 
-var pathStart = [worldwidth, worldheight];
+var pathStart = [worldWidth, worldHeight];
 var pathEnd = [0,0];
 var currentPath = [];
 
@@ -26,8 +26,8 @@ function onload()
 {
   console.log('Page loaded.');
   canvas = document.getElementById('gameCanvas');
-  canvas.width = worldwidth * tilewidth;
-  canvas.height = worldheight * tileheight;
+  canvas.width = worldWidth * tileWidth;
+  canvas.height = worldHeight * tileHeight;
   canvas.addEventListener("click", canvasClick, false);
   ctx = canvas.getContext("2d");
   spritesheet = new Image();
@@ -48,11 +48,11 @@ function createWorld()
   console.log('Creating world...');
   
   
-  for (var x=0; x < worldwidth; x++)
+  for (var x=0; x < worldWidth; x++)
   {
     world[x] = [];
     
-    for (var y=0; y < worldheight; y++)
+    for (var y=0; y < worldHeight; y++)
     {
       world[x][y] = 0;
     }
