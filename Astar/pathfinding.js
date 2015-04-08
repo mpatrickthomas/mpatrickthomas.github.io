@@ -162,43 +162,7 @@ function redraw()
        
 	}		
 }
-function redrawPath(){
-    for (var x=0; x < worldWidth; x++)
-	{
-		for (var y=0; y < worldHeight; y++)
-		{
-  		// choose a sprite to draw
-  		switch(world[x][y])
-  		{
-  			case 1: 
-  			spriteNum = 1; 
-  			break;
-            case 2:
-            spriteNum = 2;
-                break;
-            case 3:
-                spriteNum = 3;
-                break;
-            case 4:
-                spriteNum = 4;
-                break;
-                case 5:
-                spriteNum = 5;
-                break;
-                case 6:
-                spriteNum = 6;
-  			default:
-  			spriteNum = 0; 
-  			break;
-  		}
-  
-  		// draw it
-  		// ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-  		ctx.drawImage(spritesheet, spriteNum*tileWidth, 0,tileWidth, tileHeight,x*tileWidth, y*tileHeight, tileWidth, tileHeight);
-		}
-	}
-    
-}
+
 
 // handle click events on the canvas
 function canvasClick(e) 
