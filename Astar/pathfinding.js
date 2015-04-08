@@ -148,7 +148,7 @@ function redraw()
 			tileWidth, tileHeight,
 			currentPath[rp][0]*tileWidth, 
 			currentPath[rp][1]*tileHeight,
-			tileWidth, tileHeight)}, 1000);
+			tileWidth, tileHeight)}, 1);
 	}		
 }
 
