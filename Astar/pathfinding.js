@@ -446,7 +446,7 @@ function findPath(world, pathStart, pathEnd)
 				// remember this route as having no more untested options
 				Closed.push(myNode);
 			}
-            redraw();
+           console.log("still working");
 		} // keep iterating until until the Open list is empty
 		return result;
 	}
