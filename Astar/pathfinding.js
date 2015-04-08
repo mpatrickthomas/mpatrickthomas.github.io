@@ -4,8 +4,8 @@ var spritesheet = null;
 var spritesheetLoaded = false;
 var world = [[]]; //The world is a 2-Dimensional array of tiles.
 
-var worldWidth = 200;
-var worldHeight = 200;
+var worldWidth = 100;
+var worldHeight = 100;
 
 // size of a tile in pixels
 var tileWidth = 32;
