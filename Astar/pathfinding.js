@@ -48,7 +48,7 @@ function createWorld()
   console.log('Creating world...');
   
   
-  for (var x=0; x < worldWidth; x++)
+  for (var x=0; x < worldwidthidth; x++)
   {
     world[x] = [];
     
