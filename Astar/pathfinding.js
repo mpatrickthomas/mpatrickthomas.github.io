@@ -99,11 +99,12 @@ function redraw()
   		}
   
   		// draw it
+            setTimeout(function(){
   		ctx.drawImage(spritesheet, 
     		spriteNum*tileWidth, 0, 
     		tileWidth, tileHeight,
   	  	x*tileWidth, y*tileHeight,
-  		  tileWidth, tileHeight);
+  		  tileWidth, tileHeight)},500);
 		}
 	}
 
