@@ -29,18 +29,13 @@ if (typeof console == "undefined") var console = { log: function() {} };
 // the html page is ready
 function onload() 
 {
-  console.log('Page loaded.');
+  //console.log('Page loaded.');
   canvas = document.getElementById('gameCanvas');
   canvas.width = worldWidth * tileWidth;
   canvas.height = worldHeight * tileHeight;
   canvas.addEventListener("click", canvasClick, false);
   ctx = canvas.getContext("2d");
   spritesheet = new Image();
-  // spritesheet.src = 'spritesheet.png';
-  // the image above has been turned into a data url
-  // so that no external files are required for
-  // this web page - useful for included in a 
-  // "gist" or "jsfiddle" page
   spritesheet.src = 'spritesheet.png';
   spritesheet.onload = loaded;
 }
@@ -151,6 +146,43 @@ function redraw()
 			tileWidth, tileHeight);
        
 	}		
+}
+function redrawPath(){
+    for (var x=0; x < worldWidth; x++)
+	{
+		for (var y=0; y < worldHeight; y++)
+		{
+  		// choose a sprite to draw
+  		switch(world[x][y])
+  		{
+  			case 1: 
+  			spriteNum = 1; 
+  			break;
+            case 2:
+            spriteNum = 2;
+                break;
+            case 3:
+                spriteNum = 3;
+                break;
+            case 4:
+                spriteNum = 4;
+                break;
+                case 5:
+                spriteNum = 5;
+                break;
+                case 6:
+                spriteNum = 6;
+  			default:
+  			spriteNum = 0; 
+  			break;
+  		}
+  
+  		// draw it
+  		// ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+  		ctx.drawImage(spritesheet, spriteNum*tileWidth, 0,tileWidth, tileHeight,x*tileWidth, y*tileHeight, tileWidth, tileHeight);
+		}
+	}
+    
 }
 
 // handle click events on the canvas
@@ -283,15 +315,24 @@ function findPath(world, pathStart, pathEnd)
 		myE = E < worldWidth && canWalkHere(E, y),
 		myW = W > -1 && canWalkHere(W, y),
 		result = [];
-		if(myN)
-		result.push({x:x, y:N});
-		if(myE)
-		result.push({x:E, y:y});
-		if(myS)
+		if(myN){
+            result.push({x:x, y:N});
+         world[x][N] = 5;   
+        }
+		if(myE){
+		world[E][y] = 5;
+            result.push({x:E, y:y});
+        }
+		if(myS){
 		result.push({x:x, y:S});
-		if(myW)
+         world[x][S] = 5;   
+        }
+		if(myW){
 		result.push({x:W, y:y});
+        world[W][y] = 5;
+        }
 		findNeighbours(myN, myS, myE, myW, N, S, E, W, result);
+        redrawPath();
 		return result;
 	}
 
@@ -446,7 +487,7 @@ function findPath(world, pathStart, pathEnd)
 				// remember this route as having no more untested options
 				Closed.push(myNode);
 			}
-           console.log("still working");
+           
 		} // keep iterating until until the Open list is empty
 		return result;
 	}
