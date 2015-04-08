@@ -29,11 +29,6 @@ function onload()
   canvas.addEventListener("click", canvasClick, false);
   ctx = canvas.getContext("2d");
   spritesheet = new Image();
-  // spritesheet.src = 'spritesheet.png';
-  // the image above has been turned into a data url
-  // so that no external files are required for
-  // this web page - useful for included in a 
-  // "gist" or "jsfiddle" page
   spritesheet.src = 'spritesheet.png';
   spritesheet.onload = loaded;
 }
@@ -45,16 +40,13 @@ function loaded()
   createWorld();
 }
 
-// fill the world with walls
+//Creates Obstacles
 function createWorld()
 {
   console.log('Creating world...');
-  
-  // create emptiness
   for (var x=0; x < worldWidth; x++)
   {
     world[x] = [];
-    
     for (var y=0; y < worldHeight; y++)
     {
       world[x][y] = 0;
@@ -72,48 +64,41 @@ function createWorld()
   }
   
   // calculate initial possible path
-  // note: unlikely but possible to never find one...
   currentPath = [];
   while (currentPath.length == 0) 
   {
-    pathStart = [Math.floor(Math.random()*worldWidth),Math.floor(Math.random()*worldHeight)];
-    pathEnd = [Math.floor(Math.random()*worldWidth),Math.floor(Math.random()*worldHeight)];
+    pathStart = [Math.floor(Math.random()*worldWidth),Math.floor(Math.random()*worldHeight)]; //places the start at a random position
+    pathEnd = [Math.floor(Math.random()*worldWidth),Math.floor(Math.random()*worldHeight)]; //places the end at a random position
     if (world[pathStart[0]][pathStart[1]] == 0)
       currentPath = findPath(world,pathStart,pathEnd,'Manhattan');
+    redraw();
   }
-  redraw();
+  //redraw();
   
 }
 
 function redraw() 
 {
-  if (!spritesheetLoaded) return;
-
-	console.log('redrawing...');
-
-	var spriteNum = 0;
-
-	// clear the screen
-	ctx.fillStyle = '#000000';
+  if (!spritesheetLoaded) return; //failed to load spritesheet
+	var spriteNum = 0
+	ctx.fillStyle = '#000000';//clear the screen
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	for (var x=0; x < worldWidth; x++)
 	{
 		for (var y=0; y < worldHeight; y++)
 		{
-  		// choose a sprite to draw
   		switch(world[x][y])
   		{
   			case 1: 
-  			spriteNum = 1; 
+  			spriteNum = 1; //obstacle
   			break;
   			default:
-  			spriteNum = 0; 
+  			spriteNum = 0; //grass 
   			break;
   		}
   
   		// draw it
-  		// ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
   		ctx.drawImage(spritesheet, 
     		spriteNum*tileWidth, 0, 
     		tileWidth, tileHeight,
