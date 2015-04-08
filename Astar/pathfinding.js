@@ -142,14 +142,14 @@ function redraw()
   			spriteNum = 4; // path node
   			break;
 		}
-
-		ctx.drawImage(spritesheet, 
+        setTimeout(function()
+                   {ctx.drawImage(spritesheet, 
 			spriteNum*tileWidth, 0, 
 			tileWidth, tileHeight,
 			currentPath[rp][0]*tileWidth, 
 			currentPath[rp][1]*tileHeight,
-			tileWidth, tileHeight);
-        alert("a tile has been drawn!");
+			tileWidth, tileHeight)}, 500);
+        
 	}		
 }
 
