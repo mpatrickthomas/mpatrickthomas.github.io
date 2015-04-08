@@ -53,11 +53,11 @@ function createWorld()
   console.log('Creating world...');
   
   
-  for (var x=0; x < worldwidthidth; x++)
+  for (var x=0; x < worldwidth; x++)
   {
     world[x] = [];
     
-    for (var y=0; y < worldHeight; y++)
+    for (var y=0; y < worldheight; y++)
     {
       world[x][y] = 0;
     }
