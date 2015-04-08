@@ -25,7 +25,7 @@ if(typeof console == "undefined") var console = {log:function(){}};
 function onload(){
     console.log('Page loaded.');
     canvas = document.getElementById('gameCanvas');
-    canvas.width = worldwidth * titlewidth;
+    canvas.width = worldwidth * tilewidth;
     canvas.height = worldheight * tileheight;
     canvas.addEventListener("click", canvasClick, false);
     ctx = canvas.getContext("2d");
