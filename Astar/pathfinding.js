@@ -114,7 +114,7 @@ function redraw() {
             ctx.drawImage(spritesheet, spriteNum * tileWidth, 0, tileWidth, tileHeight, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
         }
     }
-
+/*
     // draw the path
     console.log('Current path length: ' + currentPath.length);
     for (rp = 0; rp < currentPath.length; rp++) {
@@ -138,6 +138,7 @@ function redraw() {
             tileWidth, tileHeight);
 
     }
+    */
 }
 
 
@@ -443,6 +444,7 @@ function findPath(world, pathStart, pathEnd) {
                     // test each one that hasn't been tried already
                     for (i = 0, j = myNeighbours.length; i < j; i++) {
                         myPath = Node(myNode, myNeighbours[i]);
+                        world[myPath.x][myPath.y] = 5;
                         if (!AStar[myPath.value]) {
                             // estimated cost of this particular route so far
                             myPath.g = myNode.g + distanceFunction(myNeighbours[i], myNode);
@@ -450,10 +452,31 @@ function findPath(world, pathStart, pathEnd) {
                             myPath.f = myPath.g + distanceFunction(myNeighbours[i], mypathEnd);
                             // remember this new path for testing above
                             Open.push(myPath);
+                            
                             // mark this node in the world graph as visited
                             AStar[myPath.value] = true;
                         }
                     }
+        for (var x = 0; x < worldWidth; x++) {
+        for (var y = 0; y < worldHeight; y++) {
+            // choose a sprite to draw
+            switch (world[x][y]) {
+
+            case 5:
+                spriteNum = 5;
+                break;
+            case 6:
+                spriteNum = 6;
+                break;
+            default:
+                spriteNum = 0;
+                break;
+            }
+
+            // draw it
+            // ctx.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+            ctx.drawImage(spritesheet, spriteNum * tileWidth, 0, tileWidth, tileHeight, x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+        }
                     // remember this route as having no more untested options
                     Closed.push(myNode);
                 }
