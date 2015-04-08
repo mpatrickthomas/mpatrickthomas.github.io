@@ -28,7 +28,7 @@ function onload()
   canvas = document.getElementById('gameCanvas');
   canvas.width = worldWidth * tileWidth;
   canvas.height = worldHeight * tileHeight;
-  canvas.addEventListener("click", canvasClick, false);
+  canvas.addEventListener("click", onClick, false);
   ctx = canvas.getContext("2d");
   spritesheet = new Image();
   spritesheet.src ='spritesheet.jpg';
