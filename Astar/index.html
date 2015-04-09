@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" type="text/css" media="screen, projection" href="demo.css" />
-	</head>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="demo.css" />
+</head>
+
 <body>
-	
 
-	    <div style="float:right">
-	    		<label for="selectGridSize">Map Size: </label>
-	    		<select id="selectGridSize" name="selectGridSize">
-	    			<option value="10">Small</option>
-	    			<option value="40" selected="selected">Medium</option>
-	    			<option value="100">Large</option>
-	    		</select>
 
-	    		<br />
-                <label for = "selectSpeed">Animation Speed: </label>
-                <select id="selectSpeed" name = "selectSpeed">
-                <option value = "4000" selected = "selected">Normal</option>
-                    <option value = "8000">Half</option>
-                    <option value = "20000">Quarter</option>
-            
-            </select>
-            <br>
-            <label for ="Diagonal">Allow diagonal movement?</label>
-            <input type = "checkbox" name = "Diagonal" id = "Diagonal"><br>
-	    		<input type="button" id="btnGenerate" value="Generate New Map" /><br>
-	    		<fieldset id='weightsKey'>
-	    			<legend>Key:</legend>
-	    			<div>
-	    			<span class="grid_item weight1" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 1 </div>
-	    			<div>
-	    			<span class="grid_item weight3" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 3 </div>
-	    			<div>
-	    			<span class="grid_item weight5" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 5 </div>
-	    			<div>
-	    			<span class="grid_item wall" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWall"></span> Wall (imapassable) </div>
-	    		</fieldset>
-				<br />
-	    <p id = "length"></p>
-        </div>
+    <div style="float:right">
+        <label for="selectGridSize">Map Size: </label>
+        <select id="selectGridSize" name="selectGridSize">
+            <option value="10">Small</option>
+            <option value="40" selected="selected">Medium</option>
+            <option value="100">Large</option>
+        </select>
+
+        <br />
+        <label for="selectSpeed">Animation Speed: </label>
+        <select id="selectSpeed" name="selectSpeed">
+            <option value="4000" selected="selected">Normal</option>
+            <option value="8000">Half</option>
+            <option value="20000">Quarter</option>
+
+        </select>
         <br>
-	    <div id="main">
-	    	<div id="search_grid">Loading grid...</div>
-	    </div>
+        <label for="Heuristic">How to traverse?</label>
+        <select id="selectHeuristic" name="selectHeuristic">
+            <option value="0" selected="selected">Manhattan</option>
+            <option value="1">Diagonal</option>
+        </select>
+        <input type="button" id="btnGenerate" value="Generate New Map" />
+        <br>
+        <fieldset id='weightsKey'>
+            <legend>Key:</legend>
+            <div>
+                <span class="grid_item weight1" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 1 </div>
+            <div>
+                <span class="grid_item weight3" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 3 </div>
+            <div>
+                <span class="grid_item weight5" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWeight3"></span> Weight of 5 </div>
+            <div>
+                <span class="grid_item wall" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWall"></span> Wall (imapassable) </div>
+        </fieldset>
+        <br />
+        <p id="length"></p>
+    </div>
+    <br>
+    <div id="main">
+        <div id="search_grid">Loading grid...</div>
+    </div>
 
-	
-	<div id="footer"></div>
 
-	<script type='text/javascript' src='jquery-1.7.1.min.js'></script>
-	<script type='text/javascript' src='astar.js'></script>
-	<script type='text/javascript' src='demo.js'></script>
+    <div id="footer"></div>
+
+    <script type='text/javascript' src='jquery-1.7.1.min.js'></script>
+    <script type='text/javascript' src='astar.js'></script>
+    <script type='text/javascript' src='demo.js'></script>
 </body>
+
 </html>
