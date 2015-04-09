@@ -142,7 +142,7 @@ pre span.key {
 
 .grid_item {
 	display: block;
-	border: 1px solid #bbb;
+	!<!--border: 1px solid #bbb;-->
 	float: left;
 	line-height:12px;
 	font-size:10px;
