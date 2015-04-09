@@ -9,7 +9,8 @@ $(function () {
         $selectSpeed = $("#selectSpeed"),
         opts = {
         gridSize: $selectGridSize.val(),
-        diagonal: $searchDiagonal.is("checked")
+        diagonal: $searchDiagonal.is("checked"),
+        speed: $selectSpeed.val()
     };
     $('selectSpeed').change(function(){
         var selected = $(this).find('option:selected');
@@ -173,7 +174,7 @@ GraphSearch.prototype.animateNoPath = function () {
 };
 GraphSearch.prototype.animatePath = function (path) {
     var grid = this.grid,
-        timeout = searchSpeed / grid.length,
+        timeout = this.opts.speed / grid.length,
         elementFromNode = function (node) {
             return grid[node.x][node.y];
         };
