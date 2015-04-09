@@ -5,8 +5,8 @@ var searchSpeed;
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
-        $heuristic = $("#selectHeuristic"),
         $selectSpeed = $("#selectSpeed"),
+        $heuristic = $("#selectHeuristic")
         opts = {
         gridSize: $selectGridSize.val(),
         heuristic: $heuristic.val(),
