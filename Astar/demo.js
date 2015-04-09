@@ -145,7 +145,7 @@ GraphSearch.prototype.cellClicked = function ($end) {
 GraphSearch.prototype.drawDebugInfo = function () {
     this.$cells.html(" ");
     var that = this;
-    if (this.opts.debug) {
+    if (this.opts.debug && grid.gridSize == 10) {
         that.$cells.each(function () {
             var node = that.nodeFromElement($(this)),
                 debug = false;
