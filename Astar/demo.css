@@ -31,7 +31,7 @@ h2 {
     padding: 3px;
     color: #339;
 }
-#main {
+.search_grid {
     border-style: outset;
 }
 .buttons { 
