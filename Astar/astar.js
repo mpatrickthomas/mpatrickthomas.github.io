@@ -303,7 +303,7 @@ BinaryHeap.prototype = {
 };
 
 return {
-    astar: astar,
+    aStar: aStar,
     Graph: Graph
 };
 
