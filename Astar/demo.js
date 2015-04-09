@@ -58,9 +58,15 @@ var css = {
 function GraphSearch($graph, options, implementation) {
     this.$graph = $graph;
     this.search = implementation;
+    var method;
+    switch(this.opts.heuristic){
+            case 1: method = astar.heuristics.diagonal;
+            break;
+            default: method = astar.heuristics.manhattan;
+    }
     this.opts = $.extend({
-        wallFrequency: 0.1,
-        debug: true,
+        wallFrequency: 0.2,
+        heuristic: method;
         gridSize: 10
     }, options);
     this.initialize();
@@ -102,9 +108,6 @@ GraphSearch.prototype.initialize = function () {
                 var cell_weight = ($("#generateWeights").prop("checked") ? (Math.floor(Math.random() * 3)) * 2 + 1 : 1);
                 nodeRow.push(cell_weight);
                 $cell.addClass('weight' + cell_weight);
-                if ($("#displayWeights").prop("checked")) {
-                    $cell.html(cell_weight);
-                }
                 if (!startSet) {
                     $cell.addClass(css.start);
                     startSet = true;
@@ -140,10 +143,8 @@ GraphSearch.prototype.cellClicked = function ($end) {
         duration = (fTime - sTime).toFixed(2);
 
     if (path.length === 0) {
-        $("#message").text("couldn't find a path (" + duration + "ms)");
         this.animateNoPath();
     } else {
-        $("#message").text("search took " + duration + "ms.");
         this.drawDebugInfo();
         this.animatePath(path);
     }

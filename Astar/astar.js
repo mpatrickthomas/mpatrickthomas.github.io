@@ -31,14 +31,7 @@ var astar = {
     search: function(graph, start, end, options) {
         graph.cleanDirty();
         options = options || {};
-        var heuristic;
-        switch(options.heuristic){
-                case 1: heuristic = astar.heuristics.diagonal;
-                break;
-                default: heuristic = astar.heuristics.manhattan;
-                break;
-                
-        }
+         var heuristic = options.heuristic || astar.heuristics.manhattan,
         var closest = options.closest || false;
         var openHeap = getHeap(),
             closestNode = start;
