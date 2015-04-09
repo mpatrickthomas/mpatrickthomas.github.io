@@ -5,7 +5,7 @@ var searchSpeed;
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
-        $searchDiagonal = $("#Diagonal"),
+        $Diagonal = $("#Diagonal"),
         $selectSpeed = $("#selectSpeed"),
         opts = {
         gridSize: $selectGridSize.val(),
