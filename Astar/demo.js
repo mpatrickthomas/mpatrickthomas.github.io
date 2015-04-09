@@ -205,7 +205,7 @@ GraphSearch.prototype.animatePath = function(path) {
     var addClass = function(path, i) {
         if(i >= path.length) { // Finished showing path, now remove
             console.log(path.length);
-            document.write("Path length" + path.length);
+            document.getElementById("length").innerHTML = path.length;
           return removeClass(path, 0);
         }
         elementFromNode(path[i]).addClass(css.active);
