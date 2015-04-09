@@ -32,12 +32,6 @@ $(function () {
         grid.graph.diagonal = val;
     });
 
-    $checkClosest.change(function () {
-        grid.setOption({
-            closest: $(this).is(":checked")
-        });
-    });
-
     $("#generateWeights").click(function () {
         if ($("#generateWeights").prop("checked")) {
             $('#weightsKey').slideDown();
