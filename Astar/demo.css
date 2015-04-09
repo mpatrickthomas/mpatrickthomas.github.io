@@ -31,6 +31,9 @@ h2 {
     padding: 3px;
     color: #339;
 }
+#main {
+    border-style: outset;
+}
 .buttons { 
     float:right;
     position:relative;
