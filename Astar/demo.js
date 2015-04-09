@@ -6,14 +6,12 @@ $(function() {
     var $grid = $("#search_grid"),
         $selectWallFrequency = $("#selectWallFrequency"),
         $selectGridSize = $("#selectGridSize"),
-        $checkDebug = $("#checkDebug"),
         $searchDiagonal = $("#searchDiagonal"),
         $checkClosest = $("#checkClosest");
 
     var opts = {
         wallFrequency: $selectWallFrequency.val(),
         gridSize: $selectGridSize.val(),
-        debug: $checkDebug.is("checked"),
         diagonal: $searchDiagonal.is("checked"),
         closest: $checkClosest.is("checked")
     };
@@ -34,9 +32,6 @@ $(function() {
         grid.initialize();
     });
 
-    $checkDebug.change(function() {
-        grid.setOption({debug: $(this).is(":checked")});
-    });
 
     $searchDiagonal.change(function() {
         var val = $(this).is(":checked");
