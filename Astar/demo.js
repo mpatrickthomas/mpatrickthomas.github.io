@@ -4,14 +4,12 @@ var WALL = 0,
 $(function() {
 
     var $grid = $("#search_grid"),
-        $selectWallFrequency = $("#selectWallFrequency"),
         $selectGridSize = $("#selectGridSize"),
         $searchDiagonal = $("#searchDiagonal"),
         $checkClosest = $("#checkClosest");
 
     var opts = {
-        wallFrequency: $selectWallFrequency.val(),
-        gridSize: 100,
+        gridSize: $selectGridSize.val(),
         diagonal: $searchDiagonal.is("checked"),
         closest: $checkClosest.is("checked")
     };
