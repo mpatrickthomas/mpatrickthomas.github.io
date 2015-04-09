@@ -121,6 +121,7 @@ pre span.key {
 	height: 0;
 	clear: both;
 	visibility: hidden;
+    margin-bottom: 0;
 }
 
 #message {
