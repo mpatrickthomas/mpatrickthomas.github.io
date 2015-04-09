@@ -167,7 +167,7 @@ GraphSearch.prototype.animateNoPath = function () {
 };
 GraphSearch.prototype.animatePath = function (path) {
     var grid = this.grid,
-        timeout = 20000 / grid.length,
+        timeout = $("#selectSpeed") / grid.length,
         elementFromNode = function (node) {
             return grid[node.x][node.y];
         };
