@@ -31,7 +31,7 @@ $(function () {
        });
         grid.initialize();
     });
-    $checkDiag.change(function() {
+    $Diagonal.change(function() {
         grid.setOption({diagonal: $(this).is(":checked")});
     });
     $searchDiagonal.change(function () {
