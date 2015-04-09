@@ -31,10 +31,7 @@ $(function () {
        });
         grid.initialize();
     });
-    $Diagonal.change(function() {
-        grid.setOption({diagonal: $(this).is(":checked")});
-    });
-    $searchDiagonal.change(function () {
+    $Diagonal.change(function () {
         var val = $(this).is(":checked");
         grid.setOption({
             diagonal: val

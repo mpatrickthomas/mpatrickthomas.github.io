@@ -1,4 +1,5 @@
 (function(definition) {
+(function(definition) {
     /* global module, define */
     if(typeof module === 'object' && typeof module.exports === 'object') {
         module.exports = definition();
