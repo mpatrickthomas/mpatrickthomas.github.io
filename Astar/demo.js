@@ -25,7 +25,7 @@ $(function () {
         });
         grid.initialize();
     });
-    $searchSpeed.change(function(){
+    $selectSpeed.change(function(){
        grid.setOption({
            speed: $(this).val()
        });
