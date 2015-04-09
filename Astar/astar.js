@@ -26,7 +26,7 @@ function getHeap() {
     });
 }//getHeap
 
-var aStar = {
+var astar = {
     search: function(graph, start, end, options) {
         graph.cleanDirty();
         options = options || {};

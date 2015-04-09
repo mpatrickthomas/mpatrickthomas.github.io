@@ -10,7 +10,7 @@ $(function () {
         diagonal: $searchDiagonal.is("checked")
     };
 
-    var grid = new GraphSearch($grid, opts, aStar.search);
+    var grid = new GraphSearch($grid, opts, astar.search);
 
     $("#btnGenerate").click(function () {
         grid.initialize();
