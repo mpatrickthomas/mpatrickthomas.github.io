@@ -1,4 +1,4 @@
-/*  astar-list.js http://github.com/bgrins/javascript-astar
+*  astar-list.js http://github.com/bgrins/javascript-astar
     MIT License
     
     ** You should not use this implementation (it is quite slower than the heap implementation) **
