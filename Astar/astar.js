@@ -18,28 +18,30 @@ function pathTo(node){
         curr = curr.parent;
     }
     return path.reverse();
-}
+}//pathTo
 
 function getHeap() {
     return new BinaryHeap(function(node) {
         return node.f;
     });
-}
-
-var astar = {
+}//getHeap
+var RRT = {
+    search: function(graph, start,end){
+        graph.cleanDirty();
+        closestNode = start;
+        
+    }//search
+}//RRT
+var aStar = {
     search: function(graph, start, end, options) {
         graph.cleanDirty();
         options = options || {};
         var heuristic = options.heuristic || astar.heuristics.manhattan,
             closest = options.closest || false;
-
         var openHeap = getHeap(),
-            closestNode = start; // set the start node to be the closest if required
-
+            closestNode = start;
         start.h = heuristic(start, end);
-
         openHeap.push(start);
-
         while(openHeap.size() > 0) {
             var currentNode = openHeap.pop();
             if(currentNode === end) {
@@ -105,12 +107,6 @@ var astar = {
     }
 };
 
-/**
-* A graph memory structure
-* @param {Array} gridIn 2D array of input weights
-* @param {Object} [options]
-* @param {bool} [options.diagonal] Specifies whether diagonal moves are allowed
-*/
 function Graph(gridIn, options) {
     options = options || {};
     this.nodes = [];
