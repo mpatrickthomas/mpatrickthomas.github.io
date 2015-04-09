@@ -212,7 +212,7 @@ GraphSearch.prototype.animatePath = function(path) {
     };
     var addClass = function(path, i) {
         if(i >= path.length) { // Finished showing path, now remove
-            return removeClass(path, 0);
+          //  return removeClass(path, 0);
         }
         elementFromNode(path[i]).addClass(css.active);
         setTimeout(function() {
