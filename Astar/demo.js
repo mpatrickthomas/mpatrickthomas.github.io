@@ -163,24 +163,11 @@ GraphSearch.prototype.nodeFromElement = function ($cell) {
     return this.graph.grid[parseInt($cell.attr("x"))][parseInt($cell.attr("y"))];
 };
 GraphSearch.prototype.animateNoPath = function () {
-    var $graph = this.$graph;
-    var jiggle = function (lim, i) {
-        if (i >= lim) {
-            $graph.css("top", 0).css("left", 0);
-            return;
-        }
-        if (!i) i = 0;
-        i++;
-        $graph.css("top", Math.random() * 6).css("left", Math.random() * 6);
-        setTimeout(function () {
-            jiggle(lim, i);
-        }, 5);
-    };
-    jiggle(15);
+    alert("Can't make a path there!");
 };
 GraphSearch.prototype.animatePath = function (path) {
     var grid = this.grid,
-        timeout = 5000 / grid.length,
+        timeout = 20000 / grid.length,
         elementFromNode = function (node) {
             return grid[node.x][node.y];
         };
