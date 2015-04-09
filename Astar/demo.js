@@ -197,7 +197,7 @@ GraphSearch.prototype.animatePath = function (path) {
         }
         elementFromNode(path[i]).removeClass(css.active);
         setTimeout(function () {
-            removeClass(path, i);
+            removeClass(path, i+1);
         }, timeout * path[i].getCost());
     };
     var setStartClass = function (path, i) {
