@@ -200,7 +200,7 @@ GraphSearch.prototype.animatePath = function (path) {
             document.getElementById("length").innerHTML = "Path length: " + path.length;
             return removeClass(path, 0);
         }
-        alert( timeout * path[i].getCost());
+        alert(searchSpeed);
         elementFromNode(path[i]).addClass(css.active);
         setTimeout(function () {
             addClass(path, i + 1);
