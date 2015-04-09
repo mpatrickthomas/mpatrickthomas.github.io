@@ -1,6 +1,7 @@
 var WALL = 0,
 performance = window.performance;
-var searchSpeed = document.getElementById('selectSpeed');
+var Speed = document.getElementById('selectSpeed');
+var searchSpeed = Speed.getAttribute('value');
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
