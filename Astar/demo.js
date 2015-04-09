@@ -9,7 +9,7 @@ $(function () {
         $selectSpeed = $("#selectSpeed"),
         opts = {
         gridSize: $selectGridSize.val(),
-        diagonal: $searchDiagonal.is("checked"),
+        diagonal: $Diagonal.is("checked"),
         speed: $selectSpeed.val()
     };
    
@@ -30,6 +30,9 @@ $(function () {
            speed: $(this).val()
        });
         grid.initialize();
+    });
+    $checkDiag.change(function() {
+        grid.setOption({diagonal: $(this).is(":checked")});
     });
     $searchDiagonal.change(function () {
         var val = $(this).is(":checked");
