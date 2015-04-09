@@ -1,6 +1,6 @@
 var WALL = 0,
 performance = window.performance;
-
+var searchSpeed = document.getElementById('selectSpeed');
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
@@ -167,7 +167,7 @@ GraphSearch.prototype.animateNoPath = function () {
 };
 GraphSearch.prototype.animatePath = function (path) {
     var grid = this.grid,
-        timeout = $("#selectSpeed") / grid.length,
+        timeout = searchSpeed / grid.length,
         elementFromNode = function (node) {
             return grid[node.x][node.y];
         };
