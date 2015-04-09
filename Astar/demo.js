@@ -12,11 +12,6 @@ $(function () {
         diagonal: $searchDiagonal.is("checked"),
         speed: $selectSpeed.val()
     };
-    $('selectSpeed').change(function(){
-        var selected = $(this).find('option:selected');
-        searchSpeed = selected.data();
-        console.log(searchSpeed);
-    });
    
     var grid = new GraphSearch($grid, opts, astar.search);
 
@@ -30,7 +25,12 @@ $(function () {
         });
         grid.initialize();
     });
-
+    $searchSpeed.change(function(){
+       grid.setOption({
+           speed: $(this).val()
+       });
+        grid.initialize();
+    });
     $searchDiagonal.change(function () {
         var val = $(this).is(":checked");
         grid.setOption({
