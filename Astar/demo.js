@@ -15,7 +15,7 @@ $(function () {
         var selected = $(this).find('option:selected');
         searchSpeed = selected.data();
         console.log(searchSpeed);
-    }
+    };
    
     var grid = new GraphSearch($grid, opts, astar.search);
 
