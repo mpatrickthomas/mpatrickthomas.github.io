@@ -20,16 +20,10 @@ $(function() {
         grid.initialize();
     });
 
-    $selectWallFrequency.change(function() {
-        grid.setOption({wallFrequency: $(this).val()});
-        grid.initialize();
-    });
-
     $selectGridSize.change(function() {
         grid.setOption({gridSize: $(this).val()});
         grid.initialize();
     });
-
 
     $searchDiagonal.change(function() {
         var val = $(this).is(":checked");
@@ -211,6 +205,7 @@ GraphSearch.prototype.animatePath = function(path) {
     var addClass = function(path, i) {
         if(i >= path.length) { // Finished showing path, now remove
             console.log(path.length);
+            document.write("Path length" + path.length);
           return removeClass(path, 0);
         }
         elementFromNode(path[i]).addClass(css.active);
@@ -220,6 +215,6 @@ GraphSearch.prototype.animatePath = function(path) {
     };
 
     addClass(path, 0);
-    this.$graph.find("." + css.start).removeClass(css.start);
-    this.$graph.find("." + css.finish).removeClass(css.finish).addClass(css.start);
+    this.$graph.find("." + css.start).removeClass(css.start); //deletes the old start position
+    this.$graph.find("." + css.finish).removeClass(css.finish).addClass(css.start); //makes the old end position the new start position
 };
