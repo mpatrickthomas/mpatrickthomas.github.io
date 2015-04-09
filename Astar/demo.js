@@ -5,11 +5,10 @@ var searchSpeed;
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
-        $Diagonal = $("#Diagonal"),
         $selectSpeed = $("#selectSpeed"),
         opts = {
         gridSize: $selectGridSize.val(),
-        diagonal: $Diagonal.is("checked"),
+        heuristic: $heuristic.val(),
         speed: $selectSpeed.val()
     };
    
@@ -31,12 +30,11 @@ $(function () {
        });
         grid.initialize();
     });
-    $Diagonal.change(function () {
-        var val = $(this).is(":checked");
-        grid.setOption({
-            diagonal: val
-        });
-        grid.graph.diagonal = val;
+    $heuristic.change(function(){
+       grid.setOption({
+           heuristic: $(this).val()
+       });
+        grid.initialize();
     });
 
     $("#generateWeights").click(function () {
