@@ -11,7 +11,7 @@ $(function () {
         gridSize: $selectGridSize.val(),
         diagonal: $searchDiagonal.is("checked")
     };
-
+    console.log(searchSpeed);
     var grid = new GraphSearch($grid, opts, astar.search);
 
     $("#btnGenerate").click(function () {
