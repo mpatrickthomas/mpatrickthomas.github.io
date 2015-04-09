@@ -5,6 +5,7 @@ $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
         $searchDiagonal = $("#searchDiagonal"),
+        $selectSpeed = $("#selectSpeed"),
         opts = {
         gridSize: $selectGridSize.val(),
         diagonal: $searchDiagonal.is("checked")
@@ -212,8 +213,8 @@ GraphSearch.prototype.animatePath = function (path) {
             document.getElementById("length").innerHTML = "Path length: " + path.length;
             return removeClass(path, 0);
         }
+        alert( timeout * path[i].getCost());
         elementFromNode(path[i]).addClass(css.active);
-        alert("node created!");
         setTimeout(function () {
             addClass(path, i + 1);
         }, timeout * path[i].getCost());
