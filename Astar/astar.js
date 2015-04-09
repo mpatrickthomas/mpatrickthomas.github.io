@@ -25,13 +25,7 @@ function getHeap() {
         return node.f;
     });
 }//getHeap
-var RRT = {
-    search: function(graph, start,end){
-        graph.cleanDirty();
-        closestNode = start;
-        
-    }//search
-}//RRT
+
 var aStar = {
     search: function(graph, start, end, options) {
         graph.cleanDirty();
