@@ -1,7 +1,7 @@
 var WALL = 0,
 performance = window.performance;
-var Speed = document.getElementById('selectSpeed');
-var searchSpeed = Speed.getAttribute('value');
+
+var searchSpeed;
 $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
@@ -11,6 +11,11 @@ $(function () {
         gridSize: $selectGridSize.val(),
         diagonal: $searchDiagonal.is("checked")
     };
+    $('selectSpeed').change(function(){
+        var selected = $(this).find('option:selected');
+        searchSpeed = selected.data();
+        console.log(searchSpeed);
+    }
     console.log(searchSpeed);
     var grid = new GraphSearch($grid, opts, astar.search);
 
