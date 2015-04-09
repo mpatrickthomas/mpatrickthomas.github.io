@@ -5,7 +5,7 @@ $(function () {
     var $grid = $("#search_grid"),
         $selectGridSize = $("#selectGridSize"),
         $searchDiagonal = $("#searchDiagonal"),
-    opts = {
+        opts = {
         gridSize: $selectGridSize.val(),
         diagonal: $searchDiagonal.is("checked"),
         closest: $checkClosest.is("checked")
