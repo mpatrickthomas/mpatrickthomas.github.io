@@ -287,7 +287,6 @@ BinaryHeap.prototype = {
                 }
             }
 
-            // Do the same checks for the other child.
             if (child2N < length) {
                 var child2 = this.content[child2N],
                     child2Score = this.scoreFunction(child2);
