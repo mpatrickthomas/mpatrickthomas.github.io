@@ -7,8 +7,7 @@ $(function () {
         $searchDiagonal = $("#searchDiagonal"),
         opts = {
         gridSize: $selectGridSize.val(),
-        diagonal: $searchDiagonal.is("checked"),
-        closest: $checkClosest.is("checked")
+        diagonal: $searchDiagonal.is("checked")
     };
 
     var grid = new GraphSearch($grid, opts, atar.search);
