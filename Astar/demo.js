@@ -189,7 +189,7 @@ GraphSearch.prototype.animatePath = function(path) {
     // will add start class if final
     var removeClass = function(path, i) {
         if(i >= path.length) { // finished removing path, set start positions
-            return setStartClass(path, i);
+            return setStartClass(path, 3);
         }
         elementFromNode(path[i]).removeClass(css.active);
         setTimeout(function() {
