@@ -11,7 +11,7 @@ $(function () {
         closest: $checkClosest.is("checked")
     };
 
-    var grid = new GraphSearch($grid, opts, aStar.search);
+    var grid = new GraphSearch($grid, opts, atar.search);
 
     $("#btnGenerate").click(function () {
         grid.initialize();
@@ -194,7 +194,7 @@ GraphSearch.prototype.animatePath = function (path) {
     var self = this;
     var removeClass = function (path, i) {
         if (i >= path.length) {
-            return setStartClass(path, 1);
+            return setStartClass(path, i + 1);
         }
         elementFromNode(path[i]).removeClass(css.active);
         setTimeout(function () {
@@ -214,9 +214,11 @@ GraphSearch.prototype.animatePath = function (path) {
             return removeClass(path, 0);
         }
         elementFromNode(path[i]).addClass(css.active);
+        alert("node created!");
         setTimeout(function () {
             addClass(path, i + 1);
         }, timeout * path[i].getCost());
+        
     };
 
     addClass(path, 0);
