@@ -16,7 +16,7 @@ $(function () {
         searchSpeed = selected.data();
         console.log(searchSpeed);
     }
-    console.log(searchSpeed);
+   
     var grid = new GraphSearch($grid, opts, astar.search);
 
     $("#btnGenerate").click(function () {
