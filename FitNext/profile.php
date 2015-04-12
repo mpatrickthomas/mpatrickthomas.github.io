@@ -102,7 +102,7 @@
                 </div>
                 <div class="row">
                     <div class="6u">
-                        <h3 class="align-right">Goal:</h3>
+                        <h3 class="align-right">Goal Weight:</h3>
                     </div>
                     <div class="6u">
                         <h3 class="align-left"><?php echo $row['goal'];?></h3>

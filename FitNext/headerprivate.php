@@ -12,6 +12,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/myscript.js"></script>
 		
         <noscript>
 			<link rel="stylesheet" href="css/skel.css" />
@@ -20,6 +21,7 @@
             
 		</noscript>
         <link rel="stylesheet" href="css/mystyle.css" />
+        <link rel="stylesheet" href="css/tabModule.css">
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>

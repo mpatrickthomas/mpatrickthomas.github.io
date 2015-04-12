@@ -130,14 +130,14 @@
                 <div class="6u 12u(mobilep)">
                     <ul class="actions align-left">
                         <li>
-                            <input type="submit" value="Login" />
-                        </li>
+                            <a href = "signup.php" class="button special">Sign up</a>                  </li>
                     </ul>
                 </div>
                 <div class="6u 12u(mobilep)">
                     <ul class="actions align-right">
                         <li>
-                            <a href = "signup.php" class="button special">Sign up</a>                  </li>
+                            <input type="submit" value="Login" />
+                        </li>
                     </ul>
                 </div>
             </div>

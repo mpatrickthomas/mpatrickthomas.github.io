@@ -3,16 +3,40 @@
 
 (function($) {	
 	$(document).ready(function () {
+        var index = Math.floor((Math.random() * 10) + 1); //random index
 		var displaylimit = 30;
-		var twittersearchtitle = "Get Motivated!";
+		var twittersearchtitle = "#fitnessmotivation";
 		var showretweets = false;
 		var showtweetlinks = true;		
 		var showtweetactions = false;
 		var showretweetindicator = false;
-		var autorefresh = false;
-		var refreshinterval = 60000; // Time to autorefresh tweets in milliseconds. 60000 milliseconds = 1 minute
+		var autorefresh = true;
+		var refreshinterval = 10000; // Time to autorefresh tweets in milliseconds. 60000 milliseconds = 1 minute
 		var refreshtimer;
 		
+        if (index == 0){
+            var twittersearchtitle = "#GetStrong";
+        } else if (index == 1){
+            var twittersearchtitle = "#FitnessMotivation";
+        } else if (index == 2){
+            var twittersearchtitle = "#GoalSetting";
+        } else if (index == 3){
+            var twittersearchtitle = "#YouCanDoIt";
+        } else if (index == 4){
+            var twittersearchtitle = "#SelfMotivation";
+        } else if (index == 5){
+            var twittersearchtitle = "#Workout";
+        } else if (index == 6){
+            var twittersearchtitle = "#FitnessQuote";
+        } else if (index == 7){
+            var twittersearchtitle = "#GetFit";
+        } else if (index == 8){
+            var twittersearchtitle = "#GetStrong";
+        } else if (index == 9){
+            var twittersearchtitle = "#RunningTips";
+        } else if (index == 10){
+            var twittersearchtitle = "#GymTime";
+        }
 		
 		var headerHTML = '';
 		var loadingHTML = '';
@@ -32,13 +56,14 @@
 			$.getJSON('get-tweets.php', 
 				function(feeds) {   
 				   feeds = feeds.statuses; //search returns an array of statuses
-					//alert(feeds);   
+					//alert(feeds.length);   
 					var feedHTML = '';
 					var displayCounter = 1;  
 					for (var i=0; i<feeds.length; i++) {
 						var tweetscreenname = feeds[i].user.name;
 						var tweetusername = feeds[i].user.screen_name;
 						var profileimage = feeds[i].user.profile_image_url_https;
+                        var lang = feeds[i].lang;
 						var status = feeds[i].text; 
 						var isaretweet = false;
 						var isdirect = false;
@@ -54,7 +79,7 @@
 						 };
 						 
 						 
-						 if (((showretweets == true) || ((isaretweet == false) && (showretweets == false)))) { 
+						 if (((showretweets == true) || ((isaretweet == false) && (showretweets == false) && (lang == "en")))) { 
 							if ((feeds[i].text.length > 1) && (displayCounter <= displaylimit)) {             
 								if (showtweetlinks == true) {
 									status = addlinks(status);
@@ -102,10 +127,10 @@
 					}
 					
 					function animatetweets() {	
-						var tweetdelaytime = 5000;
-						var tweetfadetime = 500;
-						var fadeoffsetin = 30;
-						var fadeoffsetout = -30;				
+						var tweetdelaytime = 15000;
+						var tweetfadetime = 2000;
+						var fadeoffsetin = 150;
+						var fadeoffsetout = -150;				
 						
 						var starttweet = 1;
 						var animatetweet = starttweet;
@@ -118,10 +143,10 @@
 						function fadetweet(){
 							
 							$('#tw'+animatetweet).css({'display': 'block'});
-							$('#tw'+animatetweet).css('margin-top', -fadeoffsetin);
-							$('#tw'+animatetweet).animate({'opacity': 1, 'margin-top':0},tweetfadetime, function(){						
-								$('#tw'+animatetweet).delay(tweetdelaytime).animate({'opacity': 0, 'margin-top':fadeoffsetout},tweetfadetime, function(){
-									$('#tw'+animatetweet).css({'display': 'none', 'margin-top':0});
+							$('#tw'+animatetweet).css('margin-left', -fadeoffsetin);
+							$('#tw'+animatetweet).animate({'opacity': 1, 'margin-left':0},tweetfadetime, function(){						
+								$('#tw'+animatetweet).delay(tweetdelaytime).animate({'opacity': 0, 'margin-left':fadeoffsetout},tweetfadetime, function(){
+									$('#tw'+animatetweet).css({'display': 'none', 'margin-left':0});
 									if (animatetweet < displayCounter-2+starttweet) {
 										animatetweet++;
 									} else {

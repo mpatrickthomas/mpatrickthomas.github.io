@@ -172,19 +172,26 @@
             }
 	         
             $lastID = $db->lastInsertId();
+			$date = date('Y-m-d');
             $query = " 
 	            INSERT INTO user_data ( 
                     weight,
 	                picture,
 	                goal,
 	                sex,
-                    id
+                    id,
+					calBurned,
+					calConsumed,
+					Registered
 	            ) VALUES ( 
 	                :weight,
 	                :picture,
 	                :goal,
                     :sex,
-                    :id
+                    :id,
+					:calBurned,
+					:calConsumed,
+					:Registered
 	            ) 
 	        ";
             $query_params = array( 
@@ -192,7 +199,10 @@
 	            ':picture' => 'profile/default.png',
 	            ':goal' => '',
 	            ':sex' => '', 
-	            ':id' => $lastID
+	            ':id' => $lastID,
+				':calBurned' => '0',
+				':calConsumed' => '0',
+				':Registered' => $date
 	        );
             try 
 	        { 
@@ -203,9 +213,48 @@
 	        { 
                 die("An error occured inserting, please try again"); 
             }
-            
-            header("Location: login.php?account=created");          
-	        die("Redirecting to login.php"); 
+            $query = " 
+	            INSERT INTO user_workout ( 
+                    id,
+                    monday,
+                    tuesday,
+                    wednesday,
+                    thursday,
+                    friday,
+                    saturday,
+                    sunday
+	            ) VALUES ( 
+	                :id,
+                    :monday,
+                    :tuesday,
+                    :wednesday,
+                    :thursday,
+                    :friday,
+                    :saturday,
+                    :sunday
+	            ) 
+	        ";
+            $query_params = array( 
+	            ':id' => $lastID,
+	            ':monday' => '',
+	            ':tuesday' => '',
+	            ':wednesday' => '', 
+	            ':thursday' => '',
+				':friday' => '',
+				':saturday' => '',
+				':sunday' => ''
+	        );
+            try 
+	        { 
+	            $stmt = $db->prepare($query); 
+	            $result = $stmt->execute($query_params); 
+	        } 
+	        catch(PDOException $ex) 
+	        { 
+                die("An error occured inserting, please try again"); 
+            }
+            header("Location: editprofilenewuser.php");          
+	        die("Redirecting to login.php");
 	    }
     } 
 ?> 
@@ -233,7 +282,8 @@
             <div class="row uniform 50%">
                 <div class="12u">
                     <span class="error"><?php echo $emailError;?></span>
-                    <input type="email" name="email" id="email" value="<?php echo $_POST['email'];?>" placeholder="Email" />
+                    <!--- <input type="email" name="email" id="email" value="<?php //echo $_POST['email'];?>" placeholder="Email" /> --->
+					<input type="email" name="email" id="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email'];} else{echo $_POST['email'];} ?>" />
                 </div>
             </div>
             <div class="row uniform 50%">
@@ -297,14 +347,4 @@
                     <ul class="actions align-center">
                         <li>
                             <input type="submit" value="Sign me up!" class="special"/>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-
-
-<!-- footer -->
-<?php include( 'footer.php') ?>
+                        

@@ -94,7 +94,7 @@
                     catch(PDOException $ex) { 
                         die("An error occured, please try again". $ex->getMessage()); 
                     }
-                    header("Location: profile.php?error=updated"); 
+                    header("Location: workoutplanner.php"); 
                     die("Redirecting to profile.php"); 
                 } 
                 else {
@@ -217,15 +217,17 @@
                     <span class="error"><?php echo $fileError;?></span>
                 </div>
             </div>
+            <form>
             <div class="row uniform">
                 <div class="12u">
                     <ul class="actions align-center">
                         <li>
-                            <input type="submit" class="special" value="Save changes" />
+                            <input type="submit" class="special" value="Save and Continue" />
                         </li>
                     </ul>
                 </div>
             </div>
+            </form>
         </form>
     </div>
 </section>

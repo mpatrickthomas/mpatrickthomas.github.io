@@ -29,6 +29,25 @@
         {  
             die("An error occured, please try again"); 
         } 
+        $query = "
+            DELETE
+            FROM user_data 
+            WHERE 
+                id = :id 
+        "; 
+        $query_params = array( 
+            ':id' => $_SESSION['user']['id'],
+        ); 
+        try 
+        { 
+            // Execute the query 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params); 
+        } 
+        catch(PDOException $ex) 
+        {  
+            die("An error occured, please try again"); 
+        } 
         header("Location: logout.php"); 
         die("Deleted Redirecting to logout.php"); 
     } else {

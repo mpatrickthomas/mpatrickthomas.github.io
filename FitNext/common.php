@@ -1,5 +1,6 @@
 <?php 
-//error_reporting(-1);//ini_set('display_errors', 'On');
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
     // variables taht define the connection information for your MySQL database 
     $username = 'aarontha_admin'; 
     $password = 'SIGKILLs'; 

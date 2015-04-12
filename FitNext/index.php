@@ -43,7 +43,7 @@
         </video>
         <div id="bgvideoblur"></div>
         <h2>FitNext</h2>
-        <p>The healthies site on the internet</p>
+        <p>The healthiest site on the internet</p>
         <ul class="actions">
             <li><a href="signup.php" class="button special">Sign Up</a></li>
             <li><a href="#moreinfo" class="button">Learn More</a></li>
@@ -58,7 +58,7 @@
                 <h2>Introducing the ultimate web app
                 <br />
                 for doing stuff with your health and fitness</h2>
-                <p>Fitness just got personal. We access several different services across the web to bring you the best and the finest ways to change you life.</p>
+                <p>Fitness just got personal. We access several different services across the web to bring you the best and the finest ways to change your life.</p>
             </header>
             <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
         </section>
@@ -123,9 +123,9 @@
     <section id="cta">
 
         <h2>Sign up for our fitness tips newsletter</h2>
-        <p>We pinky promise not to share your email with other</p>
+        <p>We pinky promise not to share your email with others</p>
 
-        <form>
+        <form method="get" action="signup.php">
             <div class="row uniform 50%">
                 <div class="8u 12u(mobilep)">
                     <input style="font-size:1em;" type="email" name="email" id="email" placeholder="Email Address" />
@@ -137,6 +137,11 @@
         </form>
 
     </section>
+    <script>
+        $( document ).ready(function() {
+            $('#bgvideo').get(0).play();
+        });
+    </script>
 
 <!-- Footer -->
 <?php include('footer.php'); ?>
