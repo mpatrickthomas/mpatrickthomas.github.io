@@ -31,8 +31,8 @@ $(function () {
             return new BinaryHeap(function (node) {
                 return node.f;
             });
-        } //getHeap
-
+        }
+    //getHeap
     var astar = {
         search: function (graph, start, end, options) {
             $(function () {
