@@ -1,6 +1,8 @@
 var WALL = 0,
 performance = window.performance;
-
+var goal = 0;
+var sum = 0;
+var numClicks = 0;
 var searchSpeed;
 $(function () {
     var $grid = $("#search_grid"),
@@ -9,12 +11,21 @@ $(function () {
         $heuristic = $("#selectHeuristic")
         opts = {
         gridSize: $selectGridSize.val(),
-        heuristic: $heuristic.val(),
+        //heuristic: $heuristic.val(),
         speed: $selectSpeed.val()
     };
-   
+   var gameInstruct = false;
     var grid = new GraphSearch($grid, opts, astar.search);
-
+    $("#gameBtn").click(function(){
+        if(!gameInstruct) alert("Create paths and try to make the path lengths equal the goal number! Don't go over, though!");
+        gameInstruct = true;
+        sum = 0;
+        numClicks = Math.floor((Math.random() * 7) + 1);
+        goal = Math.floor((Math.random() * 200) + 1);
+        document.getElementById("goal").textContent = "Goal: " +goal;
+        document.getElementById("sum").textContent = "Your sum: " + sum;
+        document.getElementById("numClicks").textContent = "Number of clicks left: " +numClicks;
+    });
     $("#btnGenerate").click(function () {
         grid.initialize();
     });
@@ -58,22 +69,16 @@ var css = {
 function GraphSearch($graph, options, implementation) {
     this.$graph = $graph;
     this.search = implementation;
-    var method;
-    switch(this.opts.heuristic){
-            case 1: method = astar.heuristics.diagonal;
-            break;
-            default: method = astar.heuristics.manhattan;
-    }
     this.opts = $.extend({
         wallFrequency: 0.2,
-        heuristic: method;
+        heuristic: astar.heuristics.diagonal,
         gridSize: 10
     }, options);
     this.initialize();
 }
 GraphSearch.prototype.setOption = function (opt) {
     this.opts = $.extend(this.opts, opt);
-    this.drawDebugInfo();
+    this.showValues();
 };
 GraphSearch.prototype.initialize = function () {
     this.grid = [];
@@ -129,6 +134,7 @@ GraphSearch.prototype.cellClicked = function ($end) {
     if ($end.hasClass(css.wall) || $end.hasClass(css.start)) {
         return;
     }
+    numClicks--;
     this.$cells.removeClass(css.finish);
     $end.addClass("finish");
     var $start = this.$cells.filter("." + css.start),
@@ -136,32 +142,30 @@ GraphSearch.prototype.cellClicked = function ($end) {
 
     var sTime = performance ? performance.now() : new Date().getTime();
 
-    var path = this.search(this.graph, start, end, {
-        closest: this.opts.closest
-    });
+    var path = this.search(this.graph, start, end, opts);
     var fTime = performance ? performance.now() : new Date().getTime(),
         duration = (fTime - sTime).toFixed(2);
 
     if (path.length === 0) {
         this.animateNoPath();
     } else {
-        this.drawDebugInfo();
+        this.showValues();
         this.animatePath(path);
     }
 };
-GraphSearch.prototype.drawDebugInfo = function () {
+GraphSearch.prototype.showValues = function () {
     this.$cells.html(" ");
     var that = this;
-    if (this.opts.debug && this.opts.gridSize === 10) {
+    if (this.opts.gridSize < 40) {
         that.$cells.each(function () {
             var node = that.nodeFromElement($(this)),
-                debug = false;
+               vals = false;
             if (node.visited) {
-                debug = "F: " + node.f + "<br />G: " + node.g + "<br />H: " + node.h;
+                vals = "F: " + node.f + "<br />G: " + node.g + "<br />H: " + node.h;
             }
 
-            if (debug) {
-                $(this).html(debug);
+            if (vals) {
+                $(this).html(vals);
             }
         });
     }
@@ -197,14 +201,23 @@ GraphSearch.prototype.animatePath = function (path) {
     };
     var addClass = function (path, i) {
         if (i >= path.length) {
-            console.log(path.length);
-            document.getElementById("length").innerHTML = "Path length: " + path.length;
+            //sum += path.length;
+            document.getElementById("sum").textContent = "Your sum: "+sum;
+            document.getElementById("goal").textContent = "Goal: " + goal;
+            document.getElementById("numClicks").textContent = "Number of clicks left: " + numClicks;
+            document.getElementById("length").textContent = "Path length: " + path.length;
+            if(sum <  goal) document.getElementById("sum").textContent = sum;
+            else if ((sum > goal && goal > 0 )||( numClicks < 0 && goal > 0) ){ alert("Oh noes! You lost!");
+                                            goal = 0;}
+            else if(sum === goal && numClicks >= 0){alert("Congrats you won!!!");}
             return removeClass(path, 0);
         }
-        alert(searchSpeed);
         elementFromNode(path[i]).addClass(css.active);
         setTimeout(function () {
             addClass(path, i + 1);
+            
+            sum++;
+            document.getElementById("sum").textContent = "Your sum " +sum;
         }, timeout * path[i].getCost());
         
     };
