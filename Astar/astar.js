@@ -32,7 +32,7 @@ var astar = {
         graph.cleanDirty();
         options = options || {};
          var heuristic = options.heuristic || astar.heuristics.manhattan,
-        var closest = options.closest || false;
+        var closest = options.closest || false,
         var openHeap = getHeap(),
             closestNode = start;
         start.h = heuristic(start, end);
