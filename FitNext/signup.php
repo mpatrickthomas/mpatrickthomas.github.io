@@ -168,6 +168,7 @@
 	        } 
 	        catch(PDOException $ex) 
 	        { 
+                echo $ex->getMessage();
                 die("An error occured, please try again"); 
             }
 	         
@@ -211,6 +212,7 @@
 	        } 
 	        catch(PDOException $ex) 
 	        { 
+                echo $ex->getMessage();
                 die("An error occured inserting, please try again"); 
             }
             $query = " 
@@ -251,9 +253,10 @@
 	        } 
 	        catch(PDOException $ex) 
 	        { 
+                echo $ex->getMessage();
                 die("An error occured inserting, please try again"); 
             }
-            header("Location: editprofilenewuser.php");          
+            header("Location: login.php?account=created");          
 	        die("Redirecting to login.php");
 	    }
     } 
@@ -283,7 +286,7 @@
                 <div class="12u">
                     <span class="error"><?php echo $emailError;?></span>
                     <!--- <input type="email" name="email" id="email" value="<?php //echo $_POST['email'];?>" placeholder="Email" /> --->
-					<input type="email" name="email" id="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email'];} else{echo $_POST['email'];} ?>" />
+					<input type="email" name="email" id="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email'];} else{echo $_POST['email'];} ?>" placeholder="Email" />
                 </div>
             </div>
             <div class="row uniform 50%">
@@ -347,4 +350,13 @@
                     <ul class="actions align-center">
                         <li>
                             <input type="submit" value="Sign me up!" class="special"/>
-                        
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- footer -->
+<?php include( 'footer.php') ?>

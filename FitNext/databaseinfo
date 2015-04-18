@@ -2,7 +2,7 @@
 -- version 4.2.5
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
+-- Host: localhost:3306
 -- Generation Time: Apr 01, 2015 at 07:23 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.5.14
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `fitnext`
+-- Database: `finalproj`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,10 @@ CREATE TABLE `user_data` (
   `weight` int(11) NOT NULL,
   `sex` varchar(6) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `goal` varchar(50) CHARACTER SET utf16 COLLATE utf16_unicode_ci NOT NULL
+  `goal` varchar(50) CHARACTER SET utf16 COLLATE utf16_unicode_ci NOT NULL,
+  `calBurned` int(11) NOT NULL,	
+  `calConsumed` int(11) NOT NULL,
+  `Registered` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

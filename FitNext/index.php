@@ -23,17 +23,16 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="landing">
-
 		<!-- Header -->
-			<header id="header" class="alt">
-				<h1><a href="index.php">FitNext</a></h1>
-				<nav id="nav">
-					<ul>
-						<li><a href="signup.php" class="button special">Sign Up</a></li>
-						<li><a href="login.php" class="button icon fa-sign-in">Login</a></li>
-					</ul>
-				</nav>
-			</header>
+        <header id="header" class="alt">
+            <h1><a href="index.php">FitNext</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="signup.php" class="button special">Sign Up</a></li>
+                    <li><a href="login.php" class="button icon fa-sign-in">Login</a></li>
+                </ul>
+            </nav>
+        </header>
 
 <!-- Banner -->
     <section id="banner">
@@ -41,6 +40,11 @@
             <source src="video/headervideo.webm" type="video/webm">
             <source src="video/headervideo.mp4" type="video/mp4">
         </video>
+        <script>
+            $( document ).ready(function() {
+                $('#bgvideo').get(0).play();
+            });
+        </script>
         <div id="bgvideoblur"></div>
         <h2>FitNext</h2>
         <p>The healthiest site on the internet</p>
@@ -60,7 +64,7 @@
                 for doing stuff with your health and fitness</h2>
                 <p>Fitness just got personal. We access several different services across the web to bring you the best and the finest ways to change your life.</p>
             </header>
-            <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+            <span class="image featured"><img src="images/runningtrack.jpg" alt="" /></span>
         </section>
 
         <section id="moreinfo" class="box special features">
@@ -92,9 +96,8 @@
 
         <div class="row">
             <div class="6u 12u(narrower)">
-
                 <section class="box special">
-                    <span class="image featured"><img src="images/pic02.jpg" alt="" /></span>
+                    <span class="image featured"><img src="images/tennis.jpg" alt="" /></span>
                     <h3>Sed lorem adipiscing</h3>
                     
                     <ul class="actions">
@@ -104,19 +107,16 @@
 
             </div>
             <div class="6u 12u(narrower)">
-
                 <section class="box special">
-                    <span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
+                    <span class="image featured"><img src="images/pool.jpg" alt="" /></span>
                     <h3>Accumsan integer</h3>
                     <p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
                     <ul class="actions">
                         <li><a href="#" class="button alt">Learn More</a></li>
                     </ul>
                 </section>
-
             </div>
         </div>
-
     </section>
 
 <!-- CTA -->
@@ -137,11 +137,6 @@
         </form>
 
     </section>
-    <script>
-        $( document ).ready(function() {
-            $('#bgvideo').get(0).play();
-        });
-    </script>
 
 <!-- Footer -->
 <?php include('footer.php'); ?>

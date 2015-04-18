@@ -331,13 +331,15 @@
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #777;
+/*			color: #777;*/
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
 			font-weight: 300;
+/*
 			padding-left: 2.55em;
 			padding-right: 0.75em;
+*/
 			position: relative;
 		}
 
@@ -353,6 +355,7 @@
 
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
+/*
 				background: #f8f8f8;
 				border-radius: 6px;
 				border: solid 1px #e5e5e5;
@@ -365,25 +368,48 @@
 				text-align: center;
 				top: 0;
 				width: 1.8em;
+*/
 			}
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
+/*
 			background: #666;
 			border-color: #666;
 			color: #ffffff;
 			content: '\f00c';
+*/
 		}
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #e89980;
-			box-shadow: 0 0 0 1px #e89980;
+			border-color: #6ec388;
+			box-shadow: 0 0 0 1px #238846;
 		}
 
 	input[type="checkbox"] + label:before {
 		border-radius: 6px;
 	}
+
+    input:checked + label {
+        color: black;
+        background-color: #2a8d48;
+        width: 100%;
+        margin-right: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+
+    .subSelection:checked + label {
+        color: black;
+        background-color: #6ec388;
+        width: 50%;
+        margin-right: 0px;
+        padding-right: 0px;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
 
 	input[type="radio"] + label:before {
 		border-radius: 100%;
@@ -1475,24 +1501,13 @@ width: 50%;
     background-color: #e89980;
 }
 
-#welcome{
- margin-right: 25px;   
-}
-
 #twitter-feed{
-    position:fixed;
-    width: 175px;
-    float: left;
-    align: left;
     font-size: 12px;
     background: #fff;
-    overflow: auto;
-		border-radius: 6px;
-		box-shadow: 0 2px 0 0 #e5e5e5;
-		margin: 0 1 2em 3px;
-		padding: 3em;
-    
-    
+    box-shadow: 0 2px 0 0 #e5e5e5;
+    margin: 0 0 1em 0;
+    padding: 0.5em;
+    padding-left: 1em;
 }
 
 #snapshot{
@@ -1511,4 +1526,94 @@ width: 50%;
 		padding: 3em;
     
     
+}
+
+#checkbutton{
+ -moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		border-radius: 6px;
+		border: 0;
+		color: #ffffff;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 400;
+		height: 3em;
+		line-height: 3em;
+		padding: 0 2em;
+		text-align: center;
+		text-decoration: none;
+		white-space: nowrap;  
+        background-color: #e89980;
+			color: #ffffff !important;
+}
+
+.vis-hidden {
+    -moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		border-radius: 6px;
+		border: 0;
+		color: #ffffff;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 400;
+		height: 3em;
+		line-height: 3em;
+		padding: 0 2em;
+		text-align: center;
+		text-decoration: none;
+		white-space: nowrap;  
+        background-color: #e89980;
+			color: #ffffff !important;
+}
+
+label {
+  margin: 10px;
+  padding: 5px;
+  -moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+		border-radius: 6px;
+		border: 0;
+}
+
+#calendarQuickView{
+    width: 500px;
+    display:block;
+    border-top: solid 2px #e5e5e5;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+    padding-top: 8px;
+    width: 25%;
+}
+#profilePictureDiv {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+    width: 100px;
+    height: 100px;
 }

@@ -41,8 +41,8 @@
 		var headerHTML = '';
 		var loadingHTML = '';
 		
-		headerHTML += '<h1>'+twittersearchtitle+'</h1></div>';
-		loadingHTML += '<div id="loading-container"><img src="images/ajax-loader.gif" width="32" height="32" alt="tweet loader" /></div>';
+		headerHTML += '<h4>'+twittersearchtitle+'</h4></div>';
+		loadingHTML += '<div id="loading-container"><img src="images/ajax-loader.gif" width="32em" alt="tweet loader" /></div>';
 		
 		$('#twitter-feed').html(headerHTML + loadingHTML);
 		 
@@ -88,10 +88,13 @@
 								if (displayCounter == 1) {
 									feedHTML += headerHTML;
 								}
-											 
-								feedHTML += '<div class="twitter-article" id="tw'+displayCounter+'">';                  
-								feedHTML += '<div class="twitter-pic"><a href="https://twitter.com/'+tweetusername+'" ><img src="'+profileimage+'"images/twitter-feed-icon.png" width="42" height="42" alt="twitter icon" /></a></div>';
-								feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a href="https://twitter.com/'+tweetusername+'" >'+tweetscreenname+'</a></strong> <a href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a></span><span class="tweet-time"><a href="https://twitter.com/'+tweetusername+'/status/'+tweetid+'">'+relative_time(feeds[i].created_at)+'</a></span><br/>'+status+'</p></div>';
+									
+                                feedHTML = '<div class="row"><div class="12u 12u(mobilesp)">'+
+                   '<p><span class="image left"><img src="'+profileimage+'" alt="" width="60em;" /></span>'+
+                  tweetscreenname + ' ' + tweetusername + '<br/><b>' + status + '</b></p></div></div>';
+//								feedHTML += '<div class="twitter-article" id="tw'+displayCounter+'">';                  
+//								feedHTML += '<div class="twitter-pic"><a href="https://twitter.com/'+tweetusername+'" ><img src="'+profileimage+'"images/twitter-feed-icon.png" width="42" height="42" alt="twitter icon" /></a></div>';
+//								feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a href="https://twitter.com/'+tweetusername+'" >'+tweetscreenname+'</a></strong> <a href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a></span><span class="tweet-time"><a href="https://twitter.com/'+tweetusername+'/status/'+tweetid+'">'+relative_time(feeds[i].created_at)+'</a></span><br/>'+status+'</p></div>';
 								if ((isaretweet == true) && (showretweetindicator == true)) {
 									feedHTML += '<div id="retweet-indicator"></div>';
 								}						
