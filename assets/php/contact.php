@@ -7,8 +7,8 @@ if(isset($_POST['message'])){
 	$message = $_POST['message'];
     
 	
-	$to      = 'you@example.com';
-	$subject = 'Site Contact Form';
+	$to      = 'thomas13@uga.edu';
+	$subject = 'Site Contact Form from'.$name;
 
 	$headers = 'From: '. $email . "\r\n" .
     'Reply-To: '. $email . "\r\n" .
