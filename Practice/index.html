@@ -9,17 +9,21 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="panel panel-primary">
 	<h1> Testing out bootstrap!</h1>
 	<p>This is in a container</p>
 	<p>With a relative layout!</p>
-	<p id="theTime"/></p>
-	<button  type="button" class="btn btn-primary" onclick="getTime()">What's the time?</button>
+	
+	<button  type="button" class="btn btn-primary" data-toggle="collapse" data-target="#theTime" onclick="getTime()">What's the time?</button>
+	<p id="theTime" class ="collapse"/></p>
+
 	<script type="text/javascript">
 		function getTime() {
 			var date = new Date();
 			var time = date.getTime();
-			document.getElementById("theTime").innerHTML = time;
+			
+
+			document.getElementById("theTime").innerHTML = "The number of milliseconds since 1/1/70 is" + time;
 		}
 	</script>
 	</div>
