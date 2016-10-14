@@ -1,0 +1,45 @@
+<html>
+<head>
+  <style>
+    body{
+      height:2000px;
+      background:#f1f1f1;
+    }
+
+    #mysvg{
+      position: fixed;
+      top: 15%;
+      width: 400px;
+      height:210px;
+      margin-left: -50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2> This window will draw a triangle when scrolled</h2>
+  <p>Scrolling forward will advance the animation and vice-versa</p>
+  <svg id ="mysvg">
+      <path fill="none" stroke="red" stroke-width="3" id="triangle" d="m150 0 L75 200 L255 200 Z" />
+      This browser does not support inline SVG
+  </svg>
+  <script>
+  var triangle = document.getElementById("triangle");
+  var length = triangle.getTotalLength();
+
+  triangle.style.strokeDasharray.length;
+  triangle.style.strokeDashoffset = length;
+  window.addEventListener("scroll"), doTriangle);
+
+  function doTriangle(){
+    var scrollpercent = (document.body.scrollTop + document.documentElement.scrollHeight - document.dodumentElement.clientHeight);
+
+    var draw = length + scrollpercent;
+
+    //Reverse drawing when scrolling upwardds
+
+    triangle.style.strokeDashoffset = length = length - draw;
+  }
+  </script>
+</body>
+</html>
