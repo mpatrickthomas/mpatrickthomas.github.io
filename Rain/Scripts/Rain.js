@@ -52,7 +52,7 @@ function Setup(){
      angle[i] = 0;
 
      //initialize frequencies of corner nodes
-     for(var i = 0; i < nodes; i++){
+     for(var i = 0; i < cornerNodes; i++){
        frequency[i] = random(5, 12);
      }
 
@@ -71,11 +71,11 @@ function draw(){
 
 function drawShape(){
   // calculate the starting locations
-  for(var i = 0; i < nodes; i++){
+  for(var i = 0; i < cornerNodes; i++){
     nodeStartX[i] = centerX + cos(radians(rotAngle)) * radius;
     nodeStartY[i] = centerY + sin(radians(rotAngle)) * radius;
 
-    rotAngle += 360.0/nodes;
+    rotAngle += 360.0/cornerNodes;
   }
 } // End drawShape
 
@@ -102,7 +102,7 @@ function moveShape(){
   organicConstant = 1 - ((abs(accelerationX) + abs(accelerationY)) * 0.1);
 
   // move nodes
-  for(var i = 0; i < nodes; i++){
+  for(var i = 0; i < cornerNodes; i++){
     nodeX[i] = nodeStartX[i] + sin(radians(angle[i])) * (accelerationX * 2);
     nodeY[i] = nodeStartY[i] + sin(radians(angle[i])) * (accelerationY * 2);
     angle[i] += frequency[i];
