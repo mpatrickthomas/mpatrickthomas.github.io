@@ -42,7 +42,7 @@ function Setup(){
    centerX = width/2;
    centerY = height/2;
 
-   for(var i = 0; i < nodes; i++){
+   for(var i = 0; i < cornerNodes; i++){
      nodeStartX[i] = 0;
      nodeStartY[i] = 0;
 
