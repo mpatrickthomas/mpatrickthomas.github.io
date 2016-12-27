@@ -30,7 +30,7 @@ var stringLoc = 0; // where in the LSystem we are
 
 function setup(){
     frameRate(fr);
-    createCanvas(9000, 9000);
+    createCanvas(windowWidth, windowHeight);
     background(255);
     stroke(0, 0, 0, 255);
 
