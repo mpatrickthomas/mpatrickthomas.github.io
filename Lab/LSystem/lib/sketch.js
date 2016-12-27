@@ -29,14 +29,14 @@ theRules[1] = ['Y', '-FX-Y']; // Rule #2
 var stringLoc = 0; // where in the LSystem we are
 
 function setup(){
-  frameRate(fr);
+    frameRate(fr);
     createCanvas(9000, 9000);
     background(255);
     stroke(0, 0, 0, 255);
 
     // start the x and y position in a random location
-    x = width * (2/3);
-    y = height/2;
+    x = width / 2;
+    y = height / 2;
 
     for(var i = 0; i < numLoops; i++) theString = lindenmayer(theString);
 
