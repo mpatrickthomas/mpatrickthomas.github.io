@@ -1,7 +1,7 @@
 // turtle stuff
 var x, y; // current turtle position
 var currentAngle = 0; // which way the turtle is pointing
-var step = 10; // how much the turtle moves with each 'F'
+var step = 1; // how much the turtle moves with each 'F'
 var angle = 90; // how much the turtle turns on + or -
 var fr = 120;
 
@@ -19,6 +19,8 @@ var notes = [
 var currentNote = 72; // start at C
 var osc;
 
+var lineShrinker = 5;
+
 // LSystem stuff
 var theString = 'FX';
 var numLoops = 15; // how many iterations to precompute
@@ -30,7 +32,7 @@ var stringLoc = 0; // where in the LSystem we are
 
 function setup(){
     frameRate(fr);
-    createCanvas(10000, 10000);
+    createCanvas(windowWidth, windowHeight);
     background(255);
     stroke(0, 0, 0, 255);
 
