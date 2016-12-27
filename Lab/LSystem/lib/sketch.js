@@ -1,7 +1,7 @@
 // turtle stuff
 var x, y; // current turtle position
 var currentAngle = 0; // which way the turtle is pointing
-var step = 1; // how much the turtle moves with each 'F'
+var step = 3; // how much the turtle moves with each 'F'
 var angle = 90; // how much the turtle turns on + or -
 var fr = 120;
 
