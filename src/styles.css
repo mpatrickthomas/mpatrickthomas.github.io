@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@use "@material/image-list/mdc-image-list";
+
+.base{ /* Flex container */
+    min-height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

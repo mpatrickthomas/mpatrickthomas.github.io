@@ -1,0 +1,13 @@
+<div class="base mat-typography">
+    <h1>What am I playing?</h1>
+    <app-coming-soon></app-coming-soon>
+    <p>This page will look much better in the future, but here's a short list of what I've been playing lately</p>
+    <mat-list *ngFor="let game of gameslist | keyvalue">
+        <mat-list-item>
+            {{game.key}}
+            <a href={{game.value}} matTooltip="{{game.key}} Store Page">
+                <fa-icon class="link" size="xs" [icon]="faExternalLinkAlt"></fa-icon> 
+            </a>
+        </mat-list-item>
+    </mat-list>
+</div>>

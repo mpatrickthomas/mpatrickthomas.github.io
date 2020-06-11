@@ -1,0 +1,74 @@
+<mat-toolbar color="primary">
+  
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>
+      menu
+    </mat-icon>
+  </button>
+
+  <span class="toolbar-fill-space"></span>
+  <a mat-button href="https://www.linkedin.com/in/mpatrickthomas/">
+    <fa-icon [icon]="faLinkedin" size="lg"></fa-icon> 
+  </a>
+  <a mat-button href="https://github.com/mpatrickthomas">
+    <fa-icon [icon]="faGithub" size="lg"></fa-icon> 
+  </a>
+  <a mat-icon-button href="mailto:thomas.michael95@gmail.com">
+    <fa-icon [icon]="faEnvelope" size="lg"></fa-icon> 
+  </a>
+</mat-toolbar>
+
+<mat-sidenav-container (backdropClick)="closeSideNav()" autosize class="sidenav-container">
+  
+  <mat-sidenav mode='push' #sidenav (keydown.escape) = "closeSideNav()" class="sidenav mat-typography">
+    <mat-nav-list>
+      <a mat-list-item [routerLink] = "['/']" (click)="closeSideNav()">
+        <mat-icon matListIcon>home</mat-icon> 
+        <p matLine>Home</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+      <a mat-list-item [routerLink]="['/about']" (click)="closeSideNav()">
+        <mat-icon matListIcon>face</mat-icon>
+        <p matLine>About Me</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+      <a mat-list-item [routerLink]="['/resume']" (click)="closeSideNav()">
+        <mat-icon matListIcon>subject</mat-icon>
+        <p matLine>Resume</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+      <a mat-list-item [routerLink]="['/games']" (click)="closeSideNav()">
+        <mat-icon matListIcon>videogame_asset</mat-icon>
+        <p matLine>What Am I Playing?</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+      <a mat-list-item [routerLink]="['/drawings']" (click)="closeSideNav()">
+        <mat-icon matListIcon>edit</mat-icon>
+        <p matLine>Drawings</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+      <a mat-list-item [routerLink]="['/experiments']" (click)="closeSideNav()">
+        <mat-icon matListIcon>computer</mat-icon>
+        <p matLine>Experiments</p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip color="warn" matTooltip={{WIPText}}>WIP</mat-chip>
+        </mat-chip-list>
+      </a>
+  </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
